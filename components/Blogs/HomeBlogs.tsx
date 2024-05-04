@@ -24,7 +24,7 @@ const HomeBlogs = async () => {
       <h2 className="text-3xl text-black font-bold mb-2">
         Which coffee machine is right for you?
       </h2>
-      <p className="text-base text-black font-medium mb-5">With countless options on the market, choosing the right commercial coffee machine can be a daunting task. At CoffeeKing we've categorized and simplified the selection process to help you find the perfect machine for your needs.</p>
+      <p className="text-base text-black font-medium mb-5">With countless options on the market, choosing the right commercial coffee machine can be a daunting task. At CoffeeKing we&#39;ve categorized and simplified the selection process to help you find the perfect machine for your needs.</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         {data.map((blog: any) => (
           <div key={blog.slug} className="w-full lg:w-full">

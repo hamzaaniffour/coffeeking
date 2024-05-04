@@ -34,8 +34,8 @@ const HomeProducts = async () => {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-7">
         {data.map((blog: any) => (
-          <Link href={`${blog.affiliate_link}`} target="_blank">
-            <div key={blog.id}>
+          <Link key={blog.id} href={`${blog.affiliate_link}`} target="_blank">
+            <div>
               <div className="relative w-full h-64">
                 <Image
                   src={blog.image}
