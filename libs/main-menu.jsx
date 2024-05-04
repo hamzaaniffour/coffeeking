@@ -8,6 +8,18 @@ export const links = [
       id: 2,
       title: "Brands",
       slug: "/page/brands",
+      children: [
+        {
+          id: 1,
+          title: "",
+          slug: "",
+        },
+        {
+          id: 2,
+          title: "",
+          slug: "",
+        },
+      ],
     },
     {
       id: 3,

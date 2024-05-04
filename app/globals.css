@@ -77,13 +77,13 @@
 
 .single-content a{
   text-decoration: underline;
-  text-decoration-color: #c4b5fd;
+  text-decoration-color: #fed7aa;
   padding-left: 2px;
   padding-right: 2px;
 }
 
 .single-content a:hover{
-  background: #ede9fe;
+  background: #fed7aa;
   padding-left: 2px;
   padding-right: 2px;
   color: #000;
@@ -120,13 +120,13 @@
 }
 .pages-content a{
   text-decoration: underline;
-  text-decoration-color: #c4b5fd;
+  text-decoration-color: #fed7aa;
   padding-left: 2px;
   padding-right: 2px;
 }
 
 .pages-content a:hover{
-  background: #ede9fe;
+  background: #fed7aa;
   padding-left: 2px;
   padding-right: 2px;
   color: #000;
