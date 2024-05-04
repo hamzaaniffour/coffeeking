@@ -2,32 +2,174 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: sacramento;
+  src: url("../public/assets/fonts/sacramento.ttf");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.sacramento-regular {
+  font-family: sacramento;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.swiper {
+  width: 100%;
+  height: 100%;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* .light{
+  background-color: white !important;
+  color: #000000 !important;
+}
+.dark{
+  background-color: #333333 !important;
+  color: #FFFFFF !important;
+} */
+
+.postbox:hover{
+  box-shadow: 6px 6px 0 0 black;
+    transform: translate(-6px, -6px);
+}
+
+.carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before{
+  margin: 0 25px !important;
+}
+
+.zigunder_title::before{
+  content: "aaaaaaaaaaaa";
+  position: absolute;
+  top: -42px;
+  left: 0;
+  font-size: 4em;
+  text-decoration-style: wavy;
+  text-decoration-color: aqua;
+  text-decoration-line: underline;
+  color: transparent;
+}
+
+:where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(.active, .btn):hover, :where(.menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(.active, .btn):hover,
+:where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(summary, .active, .btn).focus, :where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(summary, .active, .btn):focus, :where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):is(summary):not(.active, .btn):focus-visible, :where(.menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(summary, .active, .btn).focus, :where(.menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(summary, .active, .btn):focus, :where(.menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):is(summary):not(.active, .btn):focus-visible{
+    background: transparent !important;
+    color: #b45309 !important;
+}
+
+.single-content a{
+  text-decoration: underline;
+  text-decoration-color: #c4b5fd;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.single-content a:hover{
+  background: #ede9fe;
+  padding-left: 2px;
+  padding-right: 2px;
+  color: #000;
+  transition: background-color .7s;
+}
+
+.single-content p{
+  margin-bottom: 25px !important;
+  margin-top: 20px !important;
+}
+
+.single-content blockquote{
+    margin-bottom: 20px;
+    /* background: #e2e8f0; */
+    border: 3px solid #e2e8f0;
+    padding: 20px;
+    border-radius: 6px;
+}
+.single-content blockquote cite a{
+  font-style: normal;
+  line-height: 30px;
+}
+.single-content blockquote p{
+  font-weight: bold;
+    font-size: 23px;
+    color: #64748b;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+    text-decoration: underline;
+    text-decoration-color: #64748b;
+}
+.single-content img{
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.single-content h3{
+  margin-bottom: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+}
+.single-content h4{
+  margin-bottom: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.show {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hide {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.masonry-grid {
+  display: flex;
+  margin-left: -1rem;
+  width: auto;
+}
+
+.masonry-column {
+  padding-left: 1rem;
+  background-clip: padding-box;
+}
+
+.masonry-item {
+  margin-bottom: 1rem;
+}
+
+.calltoaction{
+  border: 2px solid black;
+}
+.calltoaction:hover{
+  box-shadow: 6px 6px 0 0 black;
+  transform: translate(-6px, -6px);
+}
+
+.backhome{
+  border: 2px solid black;
+}
+.backhome:hover{
+  box-shadow: 3px 3px 0 0 black;
+  transform: translate(-4px, -4px);
 }
