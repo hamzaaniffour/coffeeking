@@ -2,7 +2,7 @@ import React from "react";
 
 async function getHomePage() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/pages?slug=commercial-coffee-machines`
+    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/pages?slug=homepage`
   );
   if (!res.ok) {
     throw new Error("Failed to fetch homepage data");

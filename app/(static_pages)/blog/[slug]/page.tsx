@@ -53,11 +53,11 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
 
     const data = await getSinglePost(params.slug);
 
-  return <div className="max-w-[900px] mx-auto">
+  return <div className="max-w-[850px] mx-auto">
     <div className="flex justify-center items-center flex-col">
     {data.map((post: any) => (
             <div key={post.slug}>
-                <h1 className="text-5xl mb-5 text-black font-bold">
+                <h1 className="text-2xl md:text-3xl lg:text-5xl xl:text-5xl mb-7 text-black font-bold">
                     {post.title.rendered}
                 </h1>
                 <div className="single-content text-slate-800 font-light text-lg" dangerouslySetInnerHTML={{__html: post.content.rendered}}></div>
