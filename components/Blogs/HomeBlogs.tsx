@@ -14,6 +14,7 @@ async function getBlogs() {
 }
 
 const HomeBlogs = async () => {
+
   const data = await getBlogs();
   const imageUrl = data[0]._embedded["wp:featuredmedia"][0]?.source_url;
   const { base64 } = await getBlurData(imageUrl);
@@ -21,7 +22,7 @@ const HomeBlogs = async () => {
   return (
     <div>
       <h2 className="text-3xl text-black font-bold mb-4">
-        Best Coffee Machine in 2024
+      Best Coffee Machines in 2024
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         {data.map((blog: any) => (

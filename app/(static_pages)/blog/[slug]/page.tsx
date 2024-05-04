@@ -13,6 +13,7 @@ const getSinglePost = async (postSlug: string) => {
   const data = await response.json();
   return data;
 };
+
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>?/gm, "");
 }
