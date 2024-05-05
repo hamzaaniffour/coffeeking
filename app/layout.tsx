@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Headers/Navbar";
 import Footer from "@/components/Headers/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
           {children}
         </div>
         <Footer />
+        <SpeedInsights/>
       </body>
     </html>
   );
