@@ -32,11 +32,12 @@ const HomeProducts = async () => {
       <h2 className="text-3xl text-black font-bold mb-8">
         Best Coffee Machines in 2024
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-7">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-7">
         {data.map((blog: any) => (
           <Link key={blog.id} href={`${blog.affiliate_link}`} target="_blank">
             <div>
-              <div className="relative w-full h-64">
+              <div className="relative w-full h-72 lg:h-64 xl:h-64">
+                <span className="flex justify-center rounded-full items-center absolute -top-2 -left-2 z-10 bg-orange-500 text-white text-base h-12 w-12 font-bold">$50</span>
                 <Image
                   src={blog.image}
                   alt={blog.title}
@@ -47,7 +48,7 @@ const HomeProducts = async () => {
                 blurDataURL={base64}
                 />
               </div>
-              <h3 className="text-sm text-black font-semibold mb-2 mt-4">
+              <h3 className="text-md lg:text-sm xl:text-sm text-black font-semibold mb-2 mt-4">
                 {limitWords(blog.title, 5)}
               </h3>
               <button className="calltoaction font-bold py-[5px] px-2 bg-[#ffe000] hover:bg-[#ffe000] w-full transition-all text-black rounded text-md">

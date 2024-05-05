@@ -2,6 +2,7 @@
 // import React, { useEffect, useState } from "react";
 import { footerlinks } from "@/libs/footer-menu";
 import Link from "next/link";
+import { FaAngleRight } from "react-icons/fa";
 // import { FooterMenu } from "@/app/graphql/menuItems";
 
 // export interface MenuItem {
@@ -37,7 +38,7 @@ const Footer = () => {
               <ul className="">
                 {footerlinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
-                    <Link
+                    <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" /><Link
                       href={footerlink.slug}
                       className="text-lg text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
                     >
@@ -55,7 +56,7 @@ const Footer = () => {
               <ul className="">
                 {footerlinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
-                    <Link
+                    <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" /><Link
                       href={footerlink.slug}
                       className="text-lg text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
                     >
@@ -65,7 +66,7 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-            <div className="">
+            <div className="mt-10 lg:mt-0 xl:mt-0">
               <h4 className="mb-0.5 text-2xl text-black font-semibold">
                 Best Brands
               </h4>
@@ -73,7 +74,7 @@ const Footer = () => {
               <ul className="">
                 {footerlinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
-                    <Link
+                    <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" /><Link
                       href={footerlink.slug}
                       className="text-lg text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
                     >
@@ -83,7 +84,7 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-            <div className="">
+            <div className="mt-10 lg:mt-0 xl:mt-0">
               <h4 className="mb-0.5 text-2xl text-black font-semibold">
                 Contact Us
               </h4>
@@ -91,7 +92,7 @@ const Footer = () => {
               <ul className="">
                 {footerlinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
-                    <Link
+                    <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" /><Link
                       href={footerlink.slug}
                       className="text-lg text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
                     >
@@ -104,7 +105,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="p-5 text-center bg-gray-100 text-black font-medium">
+      <div className="p-5 text-center bg-gray-100 border-t-[1px] border-gray-200 text-black font-medium">
       © 2021 Coffeeworks Media Ltd.
       </div>
     </div>

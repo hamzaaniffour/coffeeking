@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: {
     default: "Your Perfect Commercial Coffee Machine - Top Picks & Reviews!",
-    template: "%s | Padre",
+    template: "%s | CoffeeKing",
 
   },
   description: "Unlock the Secret to Perfect Coffee Every Time! Find Your Ideal Commercial Coffee Machine Today. Expert Reviews & Top Picks. Compare Prices & Features.",

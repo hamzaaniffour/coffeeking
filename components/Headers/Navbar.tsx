@@ -3,8 +3,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { links } from "@/libs/main-menu";
 import { IoCloseSharp } from "react-icons/io5";
-import { RiMenu2Line, RiShoppingBag3Fill } from "react-icons/ri";
+import { RiMenu2Line } from "react-icons/ri";
 import Image from "next/image";
+import { PiCoffeeBeanDuotone } from "react-icons/pi";
 
 const Navbar = () => {
   const [sidenav, setSideNav] = useState<boolean>(false);
@@ -101,8 +102,8 @@ const Navbar = () => {
                   href="/products"
                   className="calltoaction font-bold py-[5px] px-3 bg-[#ffe000] hover:bg-[#ffe000] transition-all text-black rounded ml-3 text-md"
                 >
-                  Produits Trip{" "}
-                  <RiShoppingBag3Fill className="h-5 w-5 inline-block -mt-[8px]" />
+                  Coffee{" "}
+                  <PiCoffeeBeanDuotone className="h-5 w-5 inline-block -mt-[2px]" />
                 </Link>
               </div>
             </div>
