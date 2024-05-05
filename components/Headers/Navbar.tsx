@@ -49,7 +49,7 @@ const Navbar = () => {
                 </div>
               )}
               <button onClick={handleSideNav} className="block lg:hidden mr-3">
-                <GiCoffeeBeans className="text-black h-5 w-5" />
+                <RiMenu2Line className="text-black h-5 w-5" />
               </button>
 
               <div className="navbar-start">
@@ -62,7 +62,7 @@ const Navbar = () => {
                     height={50}
                     className="mt-0.5"
                   />
-                </Link> <SiCoffeescript className="inline-block h-8 w-8 ml-0.5" />
+                </Link> <GiCoffeeBeans className="inline-block h-6 w-6 ml-0.5" />
               </div>
 
               <div className="navbar-center hidden lg:block xl:block">
