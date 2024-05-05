@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { getBlurData } from "@/libs/blur-data-generator";
 import Link from "next/link";
+import { GoArrowUpRight } from "react-icons/go";
 
 async function getBlogs() {
   const res = await fetch(
@@ -37,7 +38,7 @@ const HomeProducts = async () => {
           <Link key={blog.id} href={`${blog.affiliate_link}`} target="_blank">
             <div>
               <div className="relative w-full h-72 lg:h-64 xl:h-64">
-                <span className="flex justify-center rounded-full items-center absolute -top-2 -left-2 z-10 bg-orange-500 text-white text-base h-12 w-12 font-bold">$50</span>
+                <span className="mask mask-hexagon flex justify-center items-center absolute -top-3 -left-3 z-10 bg-orange-500 text-white text-base h-14 w-14 font-bold">{blog.discount}</span>
                 <Image
                   src={blog.image}
                   alt={blog.title}
@@ -51,12 +52,17 @@ const HomeProducts = async () => {
               <h3 className="text-md lg:text-sm xl:text-sm text-black font-semibold mb-2 mt-4">
                 {limitWords(blog.title, 5)}
               </h3>
-              <button className="calltoaction font-bold py-[5px] px-2 bg-[#ffe000] hover:bg-[#ffe000] w-full transition-all text-black rounded text-md">
+              <button className="calltoaction font-bold py-[5px] px-2 bg-[#ffe000] hover:bg-[#ffe000] w-full transition-all text-black rounded text-sm md:text-md lg:text-md xl:text-md">
                 See Amazon Pricing
               </button>
             </div>
           </Link>
         ))}
+      </div>
+      <div className="max-w-[400px] mx-auto flex justify-center items-center mt-8">
+        <Link href="https://www.amazon.com/" target="_blank">
+          <button className="py-2 px-6 rounded-full font-bold w-full bg-black text-white">See more products on Amazon <GoArrowUpRight className="inline-block h-4 w-4 -mt-0.5" /></button>
+        </Link>
       </div>
     </div>
   );

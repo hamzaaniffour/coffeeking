@@ -5,7 +5,9 @@ import { links } from "@/libs/main-menu";
 import { IoCloseSharp } from "react-icons/io5";
 import { RiMenu2Line } from "react-icons/ri";
 import Image from "next/image";
-import { PiCoffeeBeanDuotone } from "react-icons/pi";
+import { PiCoffeeBeanDuotone, PiCoffeeLight } from "react-icons/pi";
+import { SiCoffeescript } from "react-icons/si";
+import { GiCoffeeBeans } from "react-icons/gi";
 
 const Navbar = () => {
   const [sidenav, setSideNav] = useState<boolean>(false);
@@ -47,7 +49,7 @@ const Navbar = () => {
                 </div>
               )}
               <button onClick={handleSideNav} className="block lg:hidden mr-3">
-                <RiMenu2Line className="text-black h-7 w-7" />
+                <GiCoffeeBeans className="text-black h-5 w-5" />
               </button>
 
               <div className="navbar-start">
@@ -60,7 +62,7 @@ const Navbar = () => {
                     height={50}
                     className="mt-0.5"
                   />
-                </Link>
+                </Link> <SiCoffeescript className="inline-block h-8 w-8 ml-0.5" />
               </div>
 
               <div className="navbar-center hidden lg:block xl:block">
