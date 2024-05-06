@@ -47,6 +47,8 @@ const HomeProducts = async () => {
                   quality={80}
                   placeholder="blur"
                   blurDataURL={base64}
+                  loading="eager"
+                  priority={true}
                 />
               </div>
               <h3 className="text-md lg:text-sm xl:text-sm text-black font-semibold mb-2 mt-4">
