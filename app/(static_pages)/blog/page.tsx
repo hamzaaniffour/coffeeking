@@ -46,6 +46,9 @@ const BlogPage = async () => {
                 width={400}
                 height={300}
                 className="rounded-lg"
+                layout="responsive"
+                sizes="(max-width: 768px) 100vw, 33vw"
+                quality={80}
                 priority
                 placeholder="blur"
                 blurDataURL={base64}
