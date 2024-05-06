@@ -5,9 +5,9 @@ import Link from "next/link";
 import { GoArrowUpRight } from "react-icons/go";
 
 async function getBlogs() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/products?_embed`
-  );
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/products?_embed`, {
+    next: { revalidate: 10 },
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -38,7 +38,7 @@ const HomeProducts = async () => {
           <Link key={blog.id} href={`${blog.affiliate_link}`} target="_blank">
             <div>
               <div className="relative w-full h-72 lg:h-64 xl:h-64">
-                <span className="mask mask-hexagon flex justify-center items-center absolute -top-3 -left-3 z-10 bg-orange-500 text-white text-base h-14 w-14 font-bold">{blog.discount}</span>
+                <span className="mask mask-hexagon flex justify-center items-center absolute -top-3 -left-3 z-10 bg-slate-950 shadow-orange-500 text-white text-base h-14 w-14 font-bold">{blog.discount}</span>
                 <Image
                   src={blog.image}
                   alt={blog.title}
@@ -46,7 +46,7 @@ const HomeProducts = async () => {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   quality={80}
                   placeholder="blur"
-                blurDataURL={base64}
+                  blurDataURL={base64}
                 />
               </div>
               <h3 className="text-md lg:text-sm xl:text-sm text-black font-semibold mb-2 mt-4">

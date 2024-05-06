@@ -10,7 +10,22 @@ async function getBlogs() {
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
-  return res.json();
+  const data = await res.json();
+
+  const postsWithCategories = await Promise.all(
+    data.map(async (post: any) => {
+      const categoriesRes = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/categories?include=${post.categories.join(",")}`
+      );
+      if (!categoriesRes.ok) {
+        throw new Error("Failed to fetch categories");
+      }
+      const categoriesData = await categoriesRes.json();
+      return { ...post, categoriesData };
+    })
+  );
+
+  return postsWithCategories;
 }
 
 const BlogPage = async () => {
@@ -38,9 +53,14 @@ const BlogPage = async () => {
                 blurDataURL={base64}
               />
             )}
+            <div className="mt-2">
+            {blog.categoriesData.map((category:any, index:any) => (
+                <span key={category.id} className="text-slate-500 text-base font-medium">{index > 0 && ", "}{category.name}</span>
+              ))}
+            </div>
             <h1>
               <Link href={`/blog/${blog.slug}`}>
-                <h3 className="text-2xl text-black font-bold mt-3">
+                <h3 className="text-lg lg:text-xl xl:text-xl text-black font-semibold mt-2 leading-6">
                   {blog.title.rendered}
                 </h3>
               </Link>
