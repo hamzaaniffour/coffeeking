@@ -43,8 +43,7 @@ const HomeProducts = async () => {
                   src={blog.image}
                   alt={blog.title}
                   fill={true}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  quality={80}
+                  priority
                   placeholder="blur"
                   blurDataURL={base64}
                 />
