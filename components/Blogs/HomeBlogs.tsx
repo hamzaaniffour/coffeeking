@@ -46,16 +46,14 @@ const HomeBlogs = async () => {
           <div key={blog.slug} className="w-full lg:w-full">
             {blog.featured_media && blog._embedded["wp:featuredmedia"] && (
               <Image
-                src={blog._embedded["wp:featuredmedia"][0]?.source_url}
-                alt={blog.title.rendered}
-                width={400}
-                height={300}
-                className="rounded-lg"
-                layout="responsive"
-                sizes="(max-width: 768px) 100vw, 33vw"
-                quality={80}
-                placeholder="blur"
-                blurDataURL={base64}
+              src={blog._embedded["wp:featuredmedia"][0]?.source_url}
+              alt={blog.title.rendered}
+              width={400}
+              height={300}
+              className="rounded-lg"
+              priority
+              placeholder="blur"
+              blurDataURL={base64}
               />
             )}
             <div className="mt-2">

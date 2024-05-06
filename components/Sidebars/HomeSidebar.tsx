@@ -5,7 +5,8 @@ const HomeSidebar = () => {
   return (
     <div className="sticky top-[80px]">
       <h1 className="text-black">
-        <Image
+        AD
+        {/* <Image
           src="/assets/annonce.png"
           alt="Annonce"
           width={400}
@@ -16,7 +17,7 @@ const HomeSidebar = () => {
           quality={80}
           placeholder="blur"
           blurDataURL="/assets/annonce.png"
-        />
+        /> */}
       </h1>
     </div>
   );
