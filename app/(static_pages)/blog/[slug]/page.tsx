@@ -1,3 +1,6 @@
+import ShareButtons from "@/components/Blogs/ShareButtons";
+import HomeSidebar from "@/components/Sidebars/HomeSidebar";
+import Link from "next/link";
 import React from "react";
 
 const getSinglePost = async (postSlug: string) => {
@@ -50,21 +53,46 @@ export async function generateMetadata({
 }
 
 const SinglePost = async ({ params }: { params: { slug: string } }) => {
+  const data = await getSinglePost(params.slug);
 
-    const data = await getSinglePost(params.slug);
-
-  return <div className="max-w-[850px] mx-auto">
-    <div className="flex justify-center items-center flex-col">
-    {data.map((post: any) => (
-            <div key={post.slug}>
-                <h1 className="text-2xl md:text-3xl lg:text-5xl xl:text-5xl mb-7 text-black font-bold">
-                    {post.title.rendered}
+  return (
+    <div className="">
+      <div className="lg:flex gap-14">
+        <div className="lg:w-1/12 order-first lg:order-last xl:order-last">
+          <ShareButtons />
+        </div>
+        <div className="lg:w-7/12">
+          <>
+            {data.map((post: any) => (
+              <div key={post.slug}>
+                <div className="text-sm breadcrumbs mb-3">
+                  <ul>
+                    <li>
+                      <Link href="/">Home</Link>
+                    </li>
+                    <li>
+                      <Link href="/blog">Blog</Link>
+                    </li>
+                    <li className="font-semibold">{post.title.rendered}</li>
+                  </ul>
+                </div>
+                <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl mb-7 !leading-20 text-black font-bold">
+                  {post.title.rendered}
                 </h1>
-                <div className="single-content text-slate-800 font-light text-lg" dangerouslySetInnerHTML={{__html: post.content.rendered}}></div>
-            </div>
-        ))}
+                <div
+                  className="single-content text-slate-800 font-light text-lg"
+                  dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+                ></div>
+              </div>
+            ))}
+          </>
+        </div>
+        <div className="lg:w-3/12 order-last lg:order-first xl:order-first">
+          <HomeSidebar />
+        </div>
+      </div>
     </div>
-  </div>;
+  );
 };
 
 export default SinglePost;

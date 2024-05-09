@@ -88,7 +88,7 @@ const Navbar = () => {
 
               <div className="navbar-center hidden lg:block xl:block">
                 <ul className="menu menu-horizontal px-1">
-                  <div className="flex gap-5">
+                  <div className="flex gap-6">
                     {loading
                       ? links.map((link, index) => (
                         <div key={index} className="dropdown dropdown-hover">
@@ -104,10 +104,10 @@ const Navbar = () => {
                           >
                             {link.label}
                           </Link>
-                          {link.childItems && (
+                          {link.childItems && link.childItems.nodes.length > 0 && (
                             <ul
                               tabIndex={0}
-                              className="dropdown-content z-[9] menu p-2 px-0 shadow-xl bg-base-100 rounded-lg min-w-[500px] mt-4"
+                              className="dropdown-content z-[9] menu p-2 px-0 shadow-xl bg-base-100 rounded-lg min-w-max mt-4"
                             >
                               {link.childItems.nodes.map((subLink, subIndex) => (
                                 <li key={subIndex}>

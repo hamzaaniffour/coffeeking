@@ -2,7 +2,7 @@
 // import React, { useEffect, useState } from "react";
 import { footerlinks } from "@/libs/footer-menu";
 import Link from "next/link";
-import { FaAngleRight } from "react-icons/fa";
+import { FaAngleRight, FaFacebookF, FaInstagram } from "react-icons/fa";
 // import { FooterMenu } from "@/app/graphql/menuItems";
 
 // export interface MenuItem {
@@ -31,25 +31,22 @@ const Footer = () => {
         <div className="max-w-[1200px] mx-auto">
           <div className="lg:flex justify-between gap-10">
             <div>
-              <h4 className="mb-0.5 text-2xl text-black font-semibold">
+            <h4 className="mb-0.5 text-xl text-[#000000] font-bold uppercase">
                 CoffeeKing
               </h4>
               <div className="h-[3px] rounded-full mb-5 w-[130px] bg-gradient-to-r from-gray-400 to-gray-100"></div>
-              <ul className="">
-                {footerlinks.map((footerlink, index) => (
-                  <li className="mb-[5px]" key={index}>
-                    <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" /><Link
-                      href={footerlink.slug}
-                      className="text-lg text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
-                    >
-                      {footerlink.title}
-                    </Link>
-                  </li>
-                ))}
+              <p className="max-w-[320px] text-left text-md text-black font-medium mb-2">
+              Coffeeblog.co.uk is part of the Amazon Services LLC Associates Program, an affiliate advertising initiative designed to help websites earn advertising fees by linking to amazon.co.uk.
+              </p>
+              <ul className="flex justify-start items-center gap-1 mt-4">
+                <li><Link href=""><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
+                <li><Link href=""><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
+                <li><Link href=""><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
+                <li><Link href=""><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
               </ul>
             </div>
             <div className="mt-10 lg:mt-0 xl:mt-0">
-              <h4 className="mb-0.5 text-2xl text-black font-semibold">
+            <h4 className="mb-0.5 text-xl text-[#000000] font-bold uppercase">
                 Quick Links
               </h4>
               <div className="h-[3px] rounded-full mb-5 w-[135px] bg-gradient-to-r from-gray-400 to-gray-100"></div>
@@ -58,7 +55,7 @@ const Footer = () => {
                   <li className="mb-[5px]" key={index}>
                     <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" /><Link
                       href={footerlink.slug}
-                      className="text-lg text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
+                      className="text-md text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
                     >
                       {footerlink.title}
                     </Link>
@@ -67,7 +64,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="mt-10 lg:mt-0 xl:mt-0">
-              <h4 className="mb-0.5 text-2xl text-black font-semibold">
+            <h4 className="mb-0.5 text-xl text-[#000000] font-bold uppercase">
                 Best Brands
               </h4>
               <div className="h-[3px] rounded-full mb-5 w-[130px] bg-gradient-to-r from-gray-400 to-gray-100"></div>
@@ -76,7 +73,7 @@ const Footer = () => {
                   <li className="mb-[5px]" key={index}>
                     <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" /><Link
                       href={footerlink.slug}
-                      className="text-lg text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
+                      className="text-md text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
                     >
                       {footerlink.title}
                     </Link>
@@ -85,8 +82,8 @@ const Footer = () => {
               </ul>
             </div>
             <div className="mt-10 lg:mt-0 xl:mt-0">
-              <h4 className="mb-0.5 text-2xl text-black font-semibold">
-                Contact Us
+            <h4 className="mb-0.5 text-xl text-[#000000] font-bold uppercase">
+                Informations
               </h4>
               <div className="h-[3px] rounded-full mb-5 w-[130px] bg-gradient-to-r from-gray-400 to-gray-100"></div>
               <ul className="">
@@ -94,7 +91,7 @@ const Footer = () => {
                   <li className="mb-[5px]" key={index}>
                     <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" /><Link
                       href={footerlink.slug}
-                      className="text-lg text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
+                      className="text-md text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
                     >
                       {footerlink.title}
                     </Link>

@@ -6,28 +6,28 @@ export const footerlinks = [
     },
     {
       id: 2,
-      title: "Blog",
-      slug: "/blog",
+      title: "Terms & Conditions",
+      slug: "/page/terms-and-conditions",
     },
     {
       id: 3,
-      title: "Escapades citadines",
-      slug: "/page/escapades-citadines",
+      title: "Privacy Policy",
+      slug: "/page/privacy-policy",
     },
     {
       id: 4,
-      title: "Destinations",
-      slug: "/page/destinations",
+      title: "Compensation Disclosure",
+      slug: "/page/compensation-disclosure",
     },
     {
       id: 4,
-      title: "Europe",
-      slug: "/page/europe",
+      title: "Contact Us",
+      slug: "/page/contact-us",
     },
     {
       id: 5,
-      title: "Road Trips",
-      slug: "/page/road-trips",
+      title: "About Us",
+      slug: "/page/about-us",
     },
   ];
   
