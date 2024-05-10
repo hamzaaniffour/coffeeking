@@ -37,7 +37,7 @@ const HomeProducts = async () => {
         {data.map((blog: any) => (
           <Link key={blog.id} href={`${blog.affiliate_link}`} target="_blank">
             <div>
-              <div className="relative w-full h-64">
+              <div className="relative w-full h-64" style={{ aspectRatio: '16/9' }}>
                 <span className="mask mask-hexagon flex justify-center items-center absolute -top-3 -left-3 z-10 bg-slate-950 shadow-orange-500 text-white text-base h-14 w-14 font-bold">{blog.discount}</span>
                 <Image
                   src={blog.image}

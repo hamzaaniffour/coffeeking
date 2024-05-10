@@ -69,7 +69,7 @@ const ReviewBlogs = async () => {
                 className="rounded-lg"
                 layout="responsive"
                 sizes="(max-width: 768px) 100vw, 33vw"
-                quality={80}
+                quality={100}
                 priority
                 placeholder="blur"
                 blurDataURL={base64}
