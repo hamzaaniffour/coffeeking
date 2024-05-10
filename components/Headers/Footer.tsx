@@ -39,10 +39,10 @@ const Footer = () => {
               Coffeeblog.co.uk is part of the Amazon Services LLC Associates Program, an affiliate advertising initiative designed to help websites earn advertising fees by linking to amazon.co.uk.
               </p>
               <ul className="flex justify-start items-center gap-1 mt-4">
-                <li><Link href=""><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
-                <li><Link href=""><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
-                <li><Link href=""><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
-                <li><Link href=""><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
+                <li><Link href="/"><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
+                <li><Link href="/"><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
+                <li><Link href="/"><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
+                <li><Link href="/"><FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" /></Link></li>
               </ul>
             </div>
             <div className="mt-10 lg:mt-0 xl:mt-0">

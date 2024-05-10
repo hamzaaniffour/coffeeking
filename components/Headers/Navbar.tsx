@@ -4,10 +4,9 @@ import Link from "next/link";
 import { links } from "@/libs/main-menu";
 import { IoCloseSharp } from "react-icons/io5";
 import { RiMenu2Line } from "react-icons/ri";
-import Image from "next/image";
 import { PiCoffeeBeanDuotone } from "react-icons/pi";
-import { GiCoffeeBeans } from "react-icons/gi";
 import { HeaderMenu } from "@/graphql/menu_items";
+import Logo from "@/components/Headers/Logo";
 
 interface MenuItem {
   label: string;
@@ -73,17 +72,7 @@ const Navbar = () => {
               </div>
 
               <div className="navbar-start">
-                <Link href="/" className="text-white">
-                  <Image
-                    src="https://svgur.com/i/15m5.svg"
-                    alt="logo"
-                    priority={true}
-                    width={140}
-                    height={50}
-                    className="mt-0.5"
-                  />
-                </Link>{" "}
-                <GiCoffeeBeans className="inline-block h-6 w-6 ml-0.5 text-amber-400" />
+                <Logo />
               </div>
 
               <div className="navbar-center hidden lg:block xl:block">
