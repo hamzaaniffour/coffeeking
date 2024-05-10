@@ -37,19 +37,20 @@ const HomeProducts = async () => {
         {data.map((blog: any) => (
           <Link key={blog.id} href={`${blog.affiliate_link}`} target="_blank">
             <div>
-              <div className="relative w-full h-64" style={{ aspectRatio: '16/9' }}>
+              <div className="relative w-full">
                 <span className="mask mask-hexagon flex justify-center items-center absolute -top-3 -left-3 z-10 bg-slate-950 shadow-orange-500 text-white text-base h-14 w-14 font-bold">{blog.discount}</span>
                 <Image
                   src={blog.image}
                   alt={blog.title}
-                  fill={true}
+                  width={800}
+                  height={533}
                   priority
                   placeholder="blur"
                   blurDataURL={base64}
                 />
               </div>
-              <h3 className="text-md lg:text-sm xl:text-sm text-black font-semibold mb-2 mt-4">
-                {limitWords(blog.title, 5)}
+              <h3 className="text-md lg:text-[13px] xl:text-[13px] text-black font-semibold mb-2 mt-4">
+                {limitWords(blog.title, 6)}
               </h3>
               <button className="calltoaction font-bold py-[5px] px-2 bg-[#ffe000] hover:bg-[#ffe000] w-full transition-all text-black rounded text-sm md:text-md lg:text-md xl:text-md">
                 See Amazon Pricing
