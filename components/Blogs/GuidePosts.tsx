@@ -40,7 +40,7 @@ const GuidePosts = async () => {
       <h2 className="text-3xl text-black font-bold mb-5">
         Buying Guide for Commercial Coffee Machines
       </h2>
-      <p className="text-base text-black font-medium mb-9">Looking to buy a commercial coffee machine? Our guide covers everything you need to know. We'll help you choose the right type, consider capacity and brewing methods, and provide maintenance tips. Whether you're a barista pro or new to commercial machines, we've got you covered. Let's brew!</p>
+      <p className="text-base text-black font-medium mb-9">Looking to buy a commercial coffee machine? Our guide covers everything you need to know. We&#39;ll help you choose the right type, consider capacity and brewing methods, and provide maintenance tips. Whether you&#39;re a barista pro or new to commercial machines, we&#39;ve got you covered. Let&#39;s brew!</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         {data.map((blog: any) => (
           <div key={blog.slug} className="w-full lg:w-full">

@@ -41,7 +41,7 @@ const ReviewBlogs = async () => {
         Commercial Coffee Machine Reviews
       </h2>
       <p className="text-base text-black font-medium mb-6">Looking to upgrade your coffee setup? Dive into our detailed reviews of commercial coffee machines, covering everything from high-performance espresso machines to reliable drip coffee makers and convenient pod machines. </p>
-      <p className="text-base text-black font-medium mb-6">We explore each machine's features, brewing capacity, methods, programmability, and ease of cleaning, ensuring you make an informed choice. Unsure which type is right for you?</p>
+      <p className="text-base text-black font-medium mb-6">We explore each machine&#39;s features, brewing capacity, methods, programmability, and ease of cleaning, ensuring you make an informed choice. Unsure which type is right for you?</p>
       <p className="text-base text-black font-medium mb-9">Our guides and comparisons clarify the differences between machines, helping you choose the perfect one to elevate your coffee game and impress your customers or employees. Start browsing our reviews today to find your perfect match!</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         {data.map((blog: any) => (
