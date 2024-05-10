@@ -41,19 +41,21 @@ const BlogPage = async () => {
         {data.map((blog: any) => (
           <div key={blog.slug} className="w-full lg:w-full">
             {blog.featured_media && blog._embedded["wp:featuredmedia"] && (
-              <Image
-                src={blog._embedded["wp:featuredmedia"][0]?.source_url}
-                alt={blog.title.rendered}
-                width={400}
-                height={300}
-                className="rounded-lg"
-                layout="responsive"
-                sizes="(max-width: 768px) 100vw, 33vw"
-                quality={80}
-                priority
-                placeholder="blur"
-                blurDataURL={base64}
-              />
+              <Link href={`/blog/${blog.slug}`}>
+                <Image
+                  src={blog._embedded["wp:featuredmedia"][0]?.source_url}
+                  alt={blog.title.rendered}
+                  width={400}
+                  height={300}
+                  className="rounded-lg"
+                  layout="responsive"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  quality={80}
+                  priority
+                  placeholder="blur"
+                  blurDataURL={base64}
+                />
+              </Link>
             )}
             <div className="mt-2">
               {blog.categoriesData.map((category: any, index: any) => (

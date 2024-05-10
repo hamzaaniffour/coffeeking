@@ -1,6 +1,5 @@
 import ShareButtons from "@/components/Blogs/ShareButtons";
 import HomeSidebar from "@/components/Sidebars/HomeSidebar";
-import Link from "next/link";
 import React from "react";
 
 const getSinglePost = async (postSlug: string) => {
@@ -21,76 +20,37 @@ function stripHtml(html: string) {
   return html.replace(/<[^>]*>?/gm, "");
 }
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { slug: string };
-// }) {
-//   const posts = await getSinglePost(params.slug);
-//   if (posts.length === 0) {
-//     throw new Error("No post found for the given slug.");
-//   }
-//   const post = posts[0];
-//   const tagIds = post.tags.map((tag: { id: number }) => tag.id).join(",");
-//   const tagsResponse = await fetch(
-//     `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/tags?include=${tagIds}`,
-//     {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     }
-//   );
-//   const tagsData = await tagsResponse.json();
-//   const tagTitles = tagsData
-//     .map((tag: { name: string }) => tag.name)
-//     .join(", ");
-//   return {
-//     title: post.title.rendered,
-//     description: stripHtml(post.excerpt.rendered),
-//     keywords: tagTitles,
-//   };
-// }
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const posts = await getSinglePost(params.slug);
+  if (posts.length === 0) {
+    throw new Error("No post found for the given slug.");
+  }
+  const post = posts[0];
+  return {
+    title: post.name,
+    description: stripHtml(post.description),
+  };
+}
 
 const Category = async ({ params }: { params: { slug: string } }) => {
   const data = await getSinglePost(params.slug);
 
   return (
     <div className="">
-      <div className="lg:flex gap-14">
-        <div className="lg:w-1/12 order-first lg:order-last xl:order-last">
-          <ShareButtons />
+      {data.map((post: any) => (
+        <div key={post.slug}>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold xl:text-7xl mb-6 text-black text-center decoration-amber-500 underline">
+            {post.name}
+          </h1>
+          <div className="flex justify-center items-center mb-8">
+            <p className="single-content text-slate-800 max-w-[700px] font-medium text-lg text-center">{post.description}</p>
+          </div>
         </div>
-        <div className="lg:w-7/12">
-          <>
-            {data.map((post: any) => (
-              <div key={post.slug}>
-                {/* <div className="text-sm breadcrumbs mb-3">
-                  <ul>
-                    <li>
-                      <Link href="/">Home</Link>
-                    </li>
-                    <li>
-                      <Link href="/blog">Blog</Link>
-                    </li>
-                    <li className="font-semibold">{post.name}</li>
-                  </ul>
-                </div> */}
-                <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl mb-7 !leading-20 text-black font-bold">
-                  {post.name}
-                </h1>
-                {/* <div
-                  className="single-content text-slate-800 font-light text-lg"
-                  dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-                ></div> */}
-              </div>
-            ))}
-          </>
-        </div>
-        <div className="lg:w-3/12 order-last lg:order-first xl:order-first">
-          <HomeSidebar />
-        </div>
-      </div>
+      ))}
     </div>
   );
 };

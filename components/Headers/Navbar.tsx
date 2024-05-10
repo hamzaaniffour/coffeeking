@@ -80,16 +80,16 @@ const Navbar = () => {
                   <ul className="flex gap-0">
                     {loading
                       ? links.map((link, index) => (
-                        <li key={index} className="dropdown dropdown-hover !hover:outline-0">
-                          <Link href={link.slug} className="text-base uppercase font-semibold text-white hover:text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-500 transition-all">
+                        <li key={index} className="dropdown dropdown-hover">
+                          <Link href={link.slug} className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3">
                             {link.title}</Link>
                         </li>
                       ))
                       : headerMenu.map((link, index) => (
-                        <li key={index} className="dropdown dropdown-hover py-5 !hover:outline-0">
+                        <li key={index} className="dropdown dropdown-hover py-5">
                           <Link
                             href={link.uri.startsWith('/category/') ? `${link.uri}` : `/page/${link.uri.replace('/', '')}`}
-                            className="text-base uppercase font-semibold text-white hover:text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-500 transition-all"
+                            className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
                           >
                             {link.label}
                           </Link>
@@ -102,7 +102,7 @@ const Navbar = () => {
                                 <li key={subIndex}>
                                   <Link
                                     href={`/blog${subLink.uri}`}
-                                    className="text-[15px] font-semibold py-[3px] hover:text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-400"
+                                    className="text-[15px] font-semibold py-[3px]"
                                   >
                                     {subLink.label}
                                   </Link>

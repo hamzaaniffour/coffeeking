@@ -22,7 +22,7 @@ const HomeSection = () => {
             <ReviewBlogs />
             <GuidePosts />
           </div>
-          <div className="border-0 lg:border-r-[1px] lg:border-gray-200 xl:border-r-[2px] xl:border-gray-200"></div>
+          <div className="border-0 lg:border-r-[1px] lg:border-gray-100 xl:border-r-[2px] xl:border-gray-100"></div>
           <div className="lg:w-3/12 hidden md:hidden lg:block xl:block">
             <HomeSidebar />
           </div>

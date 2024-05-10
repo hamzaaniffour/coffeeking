@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getBlurData } from "@/libs/blur-data-generator";
 import Link from "next/link";
 import { GoArrowUpRight } from "react-icons/go";
+import Ratings from "@/components/Blogs/Ratings";
 
 async function getBlogs() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/products?_embed`, {
@@ -49,8 +50,9 @@ const HomeProducts = async () => {
                   blurDataURL={base64}
                 />
               </div>
-              <h3 className="text-md lg:text-[13px] xl:text-[13px] text-black font-semibold mb-2 mt-4">
-                {limitWords(blog.title, 6)}
+              <Ratings />
+              <h3 className="text-[13px] lg:text-[14px] xl:text-[14px] text-black font-semibold mb-2 mt-1">
+                {limitWords(blog.title, 5)}
               </h3>
               <button className="calltoaction font-bold py-[5px] px-2 bg-[#ffe000] hover:bg-[#ffe000] w-full transition-all text-black rounded text-sm md:text-md lg:text-md xl:text-md">
                 See Amazon Pricing

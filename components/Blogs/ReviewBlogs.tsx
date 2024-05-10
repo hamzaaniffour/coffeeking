@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { getBlurData } from "@/libs/blur-data-generator";
 import Link from "next/link";
+import { GoArrowUpRight } from "react-icons/go";
 
 async function getBlogs() {
   const res = await fetch(
@@ -28,6 +29,14 @@ async function getBlogs() {
   );
 
   return postsWithCategories;
+}
+
+function limitWords(text: string, limit: number): string {
+  const words = text.split(" ");
+  if (words.length > limit) {
+    return words.slice(0, limit).join(" ") + "...";
+  }
+  return text;
 }
 
 const ReviewBlogs = async () => {
@@ -61,35 +70,47 @@ const ReviewBlogs = async () => {
         {data.map((blog: any) => (
           <div key={blog.slug} className="w-full lg:w-full">
             {blog.featured_media && blog._embedded["wp:featuredmedia"] && (
-              <Image
-                src={blog._embedded["wp:featuredmedia"][0]?.source_url}
-                alt={blog.title.rendered}
-                width={400}
-                height={300}
-                className="rounded-lg"
-                layout="responsive"
-                sizes="(max-width: 768px) 100vw, 33vw"
-                quality={100}
-                priority
-                placeholder="blur"
-                blurDataURL={base64}
-              />
+              <Link href={`/blog/${blog.slug}`}>
+                <Image
+                  src={blog._embedded["wp:featuredmedia"][0]?.source_url}
+                  alt={blog.title.rendered}
+                  width={400}
+                  height={300}
+                  className="rounded-lg"
+                  layout="responsive"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  quality={100}
+                  priority
+                  placeholder="blur"
+                  blurDataURL={base64}
+                />
+              </Link>
             )}
-            <div className="mt-2">
+            <div className="mt-3">
               {blog.categoriesData.map((category: any, index: any) => (
                 <Link key={category.id} href={`/category/${category.slug}`}>
-                  <span className="text-slate-500 text-base font-medium">
+                  <span className="text-slate-500 text-[13px] tracking-wider font-medium uppercase">
                     {index > 0 && ", "}
                     {category.name}
                   </span>
                 </Link>
               ))}
             </div>
-            <h3 className="text-lg lg:text-base xl:text-base text-black font-semibold mt-2 leading-6">
-              <Link href={`/blog/${blog.slug}`}>{blog.title.rendered}</Link>
+            <h3 className="text-lg lg:text-base xl:text-base text-black font-semibold mt-1 leading-6">
+              <Link href={`/blog/${blog.slug}`}>
+                {limitWords(blog.title.rendered, 8)}
+              </Link>
             </h3>
           </div>
         ))}
+      </div>
+      <div className="mt-5">
+        <Link
+          href="/category/reviews"
+          className="text-black font-bold text-base transition-all hover:bg-[#fed7aa] underline decoration-[#fed7aa]"
+        >
+          Discover All Reviews
+        </Link>
       </div>
     </div>
   );
