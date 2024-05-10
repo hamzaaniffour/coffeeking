@@ -63,8 +63,8 @@ const ReviewBlogs = async () => {
             )}
             <div className="mt-2">
             {blog.categoriesData.map((category:any, index:any) => (
-                <Link href={`/category/${category.slug}`}>  
-                  <span key={category.id} className="text-slate-500 text-base font-medium">{index > 0 && ", "}{category.name}</span>
+                <Link key={category.id} href={`/category/${category.slug}`}>  
+                  <span className="text-slate-500 text-base font-medium">{index > 0 && ", "}{category.name}</span>
                 </Link>
               ))}
             </div>
