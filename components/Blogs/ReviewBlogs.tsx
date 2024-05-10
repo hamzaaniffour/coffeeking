@@ -5,7 +5,7 @@ import Link from "next/link";
 
 async function getBlogs() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/posts?_embed`
+    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/posts/?per_page=3&filter[order]=ASC&_embed`
   );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -29,7 +29,7 @@ async function getBlogs() {
 }
 
 
-const HomeBlogs = async () => {
+const ReviewBlogs = async () => {
 
   const data = await getBlogs();
   const imageUrl = data[0]._embedded["wp:featuredmedia"][0]?.source_url;
@@ -37,10 +37,12 @@ const HomeBlogs = async () => {
 
   return (
     <div className="mt-16">
-      <h2 className="text-3xl text-black font-bold mb-2">
-        Which coffee machine is right for you?
+      <h2 className="text-3xl text-black font-bold mb-5">
+        Commercial Coffee Machine Reviews
       </h2>
-      <p className="text-base text-black font-medium mb-5">With countless options on the market, choosing the right commercial coffee machine can be a daunting task. At CoffeeKing we&#39;ve categorized and simplified the selection process to help you find the perfect machine for your needs.</p>
+      <p className="text-base text-black font-medium mb-6">Looking to upgrade your coffee setup? Dive into our detailed reviews of commercial coffee machines, covering everything from high-performance espresso machines to reliable drip coffee makers and convenient pod machines. </p>
+      <p className="text-base text-black font-medium mb-6">We explore each machine's features, brewing capacity, methods, programmability, and ease of cleaning, ensuring you make an informed choice. Unsure which type is right for you?</p>
+      <p className="text-base text-black font-medium mb-9">Our guides and comparisons clarify the differences between machines, helping you choose the perfect one to elevate your coffee game and impress your customers or employees. Start browsing our reviews today to find your perfect match!</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         {data.map((blog: any) => (
           <div key={blog.slug} className="w-full lg:w-full">
@@ -80,4 +82,4 @@ const HomeBlogs = async () => {
   );
 };
 
-export default HomeBlogs;
+export default ReviewBlogs;

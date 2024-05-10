@@ -99,7 +99,7 @@ const Navbar = () => {
                       : headerMenu.map((link, index) => (
                         <div key={index} className="dropdown dropdown-hover py-5">
                           <Link
-                            href={link.uri}
+                            href={link.uri.startsWith('/category/') ? `${link.uri}` : `/page/${link.uri.replace('/', '')}`}
                             className="text-base uppercase font-semibold text-white hover:text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-500 transition-all"
                           >
                             {link.label}
@@ -112,7 +112,7 @@ const Navbar = () => {
                               {link.childItems.nodes.map((subLink, subIndex) => (
                                 <li key={subIndex}>
                                   <Link
-                                    href={subLink.uri}
+                                    href={`/blog${subLink.uri}`}
                                     className="text-[15px] font-semibold py-[3px] hover:text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-400"
                                   >
                                     {subLink.label}
@@ -129,7 +129,7 @@ const Navbar = () => {
 
               <div className="navbar-end">
                 <Link
-                  href="/products"
+                  href="/"
                   className="calltoaction font-bold py-[5px] px-3 bg-[#ffe000] hover:bg-[#ffe000] transition-all text-black rounded ml-3 text-md"
                 >
                   Coffee{" "}
