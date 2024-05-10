@@ -77,16 +77,16 @@ const Navbar = () => {
 
               <div className="navbar-center hidden lg:block xl:block">
                 <ul className="menu menu-horizontal px-1">
-                  <div className="flex gap-6">
+                  <ul className="flex gap-0">
                     {loading
                       ? links.map((link, index) => (
-                        <div key={index} className="dropdown dropdown-hover">
+                        <li key={index} className="dropdown dropdown-hover !hover:outline-0">
                           <Link href={link.slug} className="text-base uppercase font-semibold text-white hover:text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-500 transition-all">
                             {link.title}</Link>
-                        </div>
+                        </li>
                       ))
                       : headerMenu.map((link, index) => (
-                        <div key={index} className="dropdown dropdown-hover py-5">
+                        <li key={index} className="dropdown dropdown-hover py-5 !hover:outline-0">
                           <Link
                             href={link.uri.startsWith('/category/') ? `${link.uri}` : `/page/${link.uri.replace('/', '')}`}
                             className="text-base uppercase font-semibold text-white hover:text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-500 transition-all"
@@ -110,9 +110,9 @@ const Navbar = () => {
                               ))}
                             </ul>
                           )}
-                        </div>
+                        </li>
                       ))}
-                  </div>
+                  </ul>
                 </ul>
               </div>
 
