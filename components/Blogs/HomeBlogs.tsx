@@ -66,13 +66,9 @@ const HomeBlogs = async () => {
                 </Link>
               ))}
             </div>
-            <h1>
-              <Link href={`/blog/${blog.slug}`}>
-                <h3 className="text-lg lg:text-base xl:text-base text-black font-semibold mt-2 leading-6">
-                  {blog.title.rendered}
-                </h3>
-              </Link>
-            </h1>
+            <h3 className="text-lg lg:text-base xl:text-base text-black font-semibold mt-2 leading-6">
+              <Link href={`/blog/${blog.slug}`}>{blog.title.rendered}</Link>
+            </h3>
           </div>
         ))}
       </div>

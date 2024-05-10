@@ -15,7 +15,9 @@ async function getBlogs() {
   const postsWithCategories = await Promise.all(
     data.map(async (post: any) => {
       const categoriesRes = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/categories?include=${post.categories.join(",")}`
+        `${
+          process.env.NEXT_PUBLIC_BASE_URLS
+        }/wp-json/wp/v2/categories?include=${post.categories.join(",")}`
       );
       if (!categoriesRes.ok) {
         throw new Error("Failed to fetch categories");
@@ -29,7 +31,6 @@ async function getBlogs() {
 }
 
 const BlogPage = async () => {
-
   const data = await getBlogs();
   const imageUrl = data[0]._embedded["wp:featuredmedia"][0]?.source_url;
   const { base64 } = await getBlurData(imageUrl);
@@ -55,17 +56,19 @@ const BlogPage = async () => {
               />
             )}
             <div className="mt-2">
-            {blog.categoriesData.map((category:any, index:any) => (
-                <span key={category.id} className="text-slate-500 text-base font-medium">{index > 0 && ", "}{category.name}</span>
+              {blog.categoriesData.map((category: any, index: any) => (
+                <span
+                  key={category.id}
+                  className="text-slate-500 text-base font-medium"
+                >
+                  {index > 0 && ", "}
+                  {category.name}
+                </span>
               ))}
             </div>
-            <h1>
-              <Link href={`/blog/${blog.slug}`}>
-                <h3 className="text-lg lg:text-xl xl:text-xl text-black font-semibold mt-2 leading-6">
-                  {blog.title.rendered}
-                </h3>
-              </Link>
-            </h1>
+            <h3 className="text-lg lg:text-xl xl:text-xl text-black font-semibold mt-2 leading-6">
+              <Link href={`/blog/${blog.slug}`}>{blog.title.rendered}</Link>
+            </h3>
           </div>
         ))}
       </div>
