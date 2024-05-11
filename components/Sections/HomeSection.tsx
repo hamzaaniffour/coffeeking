@@ -7,7 +7,6 @@ import Marquees from "@/components/Sections/Marquees";
 import Hero from "./Hero";
 import ReviewBlogs from "@/components/Blogs/ReviewBlogs";
 import GuidePosts from "@/components/Blogs/GuidePosts";
-import AllBlogPosts from "../ConnectionTest";
 
 const HomeSection = () => {
   return (
