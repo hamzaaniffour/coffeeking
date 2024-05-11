@@ -40,7 +40,7 @@ const Navbar = () => {
       <div className="">
         <header className="mb-32">
           <nav className="bg-black flex justify-center items-center shadow w-full px-5 lg:px-0 xl:px-0 fixed top-0 z-50">
-            <div className="navbar max-w-[1200px] mx-auto flex justify-center !p-0 !h-0">
+            <div className="navbar max-w-[1250px] mx-auto flex justify-center !p-0 !h-0">
               {sidenav && (
                 <div className="bg-black bg-opacity-90 h-full w-full fixed top-0 left-0 z-50">
                   <div className="!w-[65%] bg-white transition-all pt-12 z-50 block shadow fixed left-0 top-0 bottom-0 h-full lg:hidden xl:hidden">
@@ -119,7 +119,7 @@ const Navbar = () => {
               <div className="navbar-end">
                 <Link
                   href="/"
-                  className="calltoaction font-bold py-[5px] px-3 bg-[#ffe000] hover:bg-[#ffe000] transition-all text-black rounded ml-3 text-md"
+                  className="calltoaction font-bold py-[5px] px-3 bg-amber-400 hover:bg-amber-500 transition-all text-black rounded ml-3 text-md"
                 >
                   Coffee{" "}
                   <PiCoffeeBeanDuotone className="h-5 w-5 inline-block -mt-[2px]" />

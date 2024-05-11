@@ -9,11 +9,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Perfect Commercial Coffee Machine - Top Picks & Reviews!",
-    template: "%s | CoffeeKing",
+    default: "Your Perfect Commercial Coffee Machines - Top Picks & Reviews!",
+    template: "%s | Cyclewaycoffee",
 
   },
-  description: "Unlock the Secret to Perfect Coffee Every Time! Find Your Ideal Commercial Coffee Machine Today. Expert Reviews & Top Picks. Compare Prices & Features.",
+  description: "Unlock the Secret to Perfect Coffee Every Time! Find Your Ideal Commercial Coffee Machines Today. Expert Reviews & Top Picks. Compare Prices & Features.",
   twitter: {
     card: "summary_large_image",
   },
@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="FR-fr" data-theme="light">
       <body className={`${inter.className}`}>
         <Navbar />
-        <div className="max-w-[1200px] mx-auto mb-16 mt-16 px-5 lg:px-0 xl:px-0">
+        <div className="max-w-[1250px] mx-auto mb-16 mt-16 px-5 lg:px-0 xl:px-0">
           {children}
         </div>
         <Footer />

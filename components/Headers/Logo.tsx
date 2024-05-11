@@ -1,17 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { GiCoffeeBeans } from "react-icons/gi";
+import cyclewaycoffee from '@/public/assets/cyclewaycoffee.svg'
 
 const Logo = () => {
   return (
     <div>
       <Link href="/" className="text-amber-400">
         <Image
-          src="https://svgur.com/i/15m5.svg"
+          src={cyclewaycoffee}
           alt="logo"
           priority={true}
-          width={140}
+          width={220}
           height={50}
         />
       </Link>
