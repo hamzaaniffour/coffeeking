@@ -1,47 +1,69 @@
-import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { getBlurData } from "@/libs/blur-data-generator";
-import Link from "next/link";
 
-async function getBlogs() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/posts/?per_page=3&filter[order]=ASC&_embed`
-  );
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+export default async function AllBlogPosts() {
+  function limitWords(text: string, limit: number): string {
+    const words = text.split(" ");
+    if (words.length > limit) {
+      return words.slice(0, limit).join(" ") + "...";
+    }
+    return text;
   }
-  const data = await res.json();
 
-  const postsWithCategories = await Promise.all(
-    data.map(async (post: any) => {
-      const categoriesRes = await fetch(
-        `${
-          process.env.NEXT_PUBLIC_BASE_URLS
-        }/wp-json/wp/v2/categories?include=${post.categories.join(",")}`
-      );
-      if (!categoriesRes.ok) {
-        throw new Error("Failed to fetch categories");
+  const { data } = await fetch(`${process.env.NEXT_PUBLIC_GRAPHQL_URL}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+        query getPosts {
+          posts {
+            edges {
+              node {
+                title
+                slug
+                featuredImage {
+                  node {
+                    sourceUrl
+                  }
+                }
+                categories {
+                  edges {
+                    node {
+                      slug
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `,
+    }),
+    next: { revalidate: 10 },
+  }).then((res) => res.json());
+
+  let blogPosts = data?.posts?.edges;
+
+  const blurDataPromises = blogPosts?.map(async (post: any) => {
+    if (post.node.featuredImage) {
+      const imageUrl = post.node.featuredImage.node.sourceUrl;
+      const { base64 } = await getBlurData(imageUrl);
+      return base64;
+    }
+    return null;
+  });
+
+  await Promise.all(blurDataPromises).then((blurDataArray) => {
+    blogPosts?.forEach((post: any, index: number) => {
+      if (post.node.featuredImage) {
+        post.node.featuredImage.node.blurDataURL = blurDataArray[index];
       }
-      const categoriesData = await categoriesRes.json();
-      return { ...post, categoriesData };
-    })
-  );
-
-  return postsWithCategories;
-}
-
-function limitWords(text: string, limit: number): string {
-  const words = text.split(" ");
-  if (words.length > limit) {
-    return words.slice(0, limit).join(" ") + "...";
-  }
-  return text;
-}
-
-const GuidePosts = async () => {
-  const data = await getBlogs();
-  const imageUrl = data[0]._embedded["wp:featuredmedia"][0]?.source_url;
-  const { base64 } = await getBlurData(imageUrl);
+    });
+  });
 
   return (
     <div className="mt-16">
@@ -56,45 +78,57 @@ const GuidePosts = async () => {
         you covered. Let&#39;s brew!
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-        {data.map((blog: any) => (
-          <div key={blog.slug} className="w-full lg:w-full">
-            {blog.featured_media && blog._embedded["wp:featuredmedia"] && (
-              <Link href={`/blog/${blog.slug}`}>
-                <Image
-                  src={blog._embedded["wp:featuredmedia"][0]?.source_url}
-                  alt={blog.title.rendered}
-                  width={400}
-                  height={300}
-                  className="rounded-lg"
-                  layout="responsive"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  quality={100}
-                  priority
-                  placeholder="blur"
-                  blurDataURL={base64}
-                />
-              </Link>
-            )}
-            <div className="mt-3">
-              {blog.categoriesData.map((category: any, index: any) => (
-                <Link key={category.id} href={`/category/${category.slug}`}>
-                  <span className="text-slate-500 text-[13px] tracking-wider font-medium uppercase">
-                    {index > 0 && ", "}
-                    {category.name}
-                  </span>
+        {blogPosts?.map(
+          (post: {
+            node: any;
+            title: any;
+            featuredImage: any;
+            categories: any;
+          }) => (
+            <div key={post.node.slug} className="w-full lg:w-full">
+              {post.node.featuredImage && (
+                <Link href={`/blog/${post.node.slug}`}>
+                  <Image
+                    src={post.node.featuredImage.node.sourceUrl}
+                    alt={post.node.title}
+                    width={400}
+                    height={300}
+                    className="rounded-lg"
+                    layout="responsive"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    quality={100}
+                    priority
+                    placeholder="blur"
+                    blurDataURL={
+                      post.node.featuredImage.node.blurDataURL || undefined
+                    }
+                  />
                 </Link>
-              ))}
+              )}
+              <div className="mt-3">
+                {post.node.categories.edges.map(
+                  (category: any, index: number) => (
+                    <Link
+                      key={category.node.slug}
+                      href={`/category/${category.node.slug}`}
+                    >
+                      <span className="text-slate-500 text-[13px] tracking-wider font-medium uppercase">
+                        {index > 0 && ", "}
+                        {category.node.name}
+                      </span>
+                    </Link>
+                  )
+                )}
+              </div>
+              <h3 className="text-lg lg:text-base xl:text-base text-black font-semibold mt-1 leading-6">
+                <Link href={`/blog/${post.node.slug}`}>
+                  {limitWords(post.node.title, 8)}
+                </Link>
+              </h3>
             </div>
-            <h3 className="text-lg lg:text-base xl:text-base text-black font-semibold mt-1 leading-6">
-              <Link href={`/blog/${blog.slug}`}>
-                {limitWords(blog.title.rendered, 8)}
-              </Link>
-            </h3>
-          </div>
-        ))}
+          )
+        )}
       </div>
     </div>
   );
-};
-
-export default GuidePosts;
+}

@@ -2,12 +2,12 @@ export const links = [
     {
       id: 1,
       title: "Home",
-      slug: "/",
+      slug: "",
     },
     {
       id: 2,
       title: "Brands",
-      slug: "/page/brands",
+      slug: "",
       children: [
         {
           id: 1,
@@ -24,12 +24,12 @@ export const links = [
     {
       id: 3,
       title: "Reviews",
-      slug: "/page/reviews",
+      slug: "",
     },
     {
       id: 4,
       title: "Blog",
-      slug: "/blog",
+      slug: "",
     },
     {
       id: 5,
