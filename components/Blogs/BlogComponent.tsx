@@ -103,7 +103,7 @@ const BlogsPage = () => {
                     {post.categories?.nodes.map((category, index) => (
                       <Link href={`/category/${category.slug}`} key={index}>
                         <span className="text-slate-500 text-[13px] tracking-wider font-medium uppercase">
-                          {index > 0 && ", "}
+                          {index > 0 && <span className="mr-1">, </span>}
                           {category.name}
                         </span>
                       </Link>

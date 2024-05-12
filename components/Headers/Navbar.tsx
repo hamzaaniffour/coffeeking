@@ -67,7 +67,10 @@ const Navbar = () => {
                   </button>
                 </div>
               )}
-              <div onClick={handleSideNav} className="block lg:hidden mr-3 cursor-pointer">
+              <div
+                onClick={handleSideNav}
+                className="block lg:hidden mr-3 cursor-pointer"
+              >
                 <RiMenu2Line className="text-white h-5 w-5" />
               </div>
 
@@ -76,43 +79,55 @@ const Navbar = () => {
               </div>
 
               <div className="navbar-center hidden lg:block xl:block">
-                <ul className="menu menu-horizontal px-1">
-                  <ul className="flex gap-0">
-                    {loading
-                      ? links.map((link, index) => (
+                <ul className="menu menu-horizontal px-1 flex gap-0">
+                  {loading
+                    ? links.map((link, index) => (
                         <li key={index} className="dropdown dropdown-hover">
-                          <Link href={link.slug} className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3">
-                            {link.title}</Link>
+                          <Link
+                            href={link.slug}
+                            className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
+                          >
+                            {link.title}
+                          </Link>
                         </li>
                       ))
-                      : headerMenu.map((link, index) => (
-                        <li key={index} className="dropdown dropdown-hover py-5">
+                    : headerMenu.map((link, index) => (
+                        <li
+                          key={index}
+                          className="dropdown dropdown-hover py-5"
+                        >
                           <Link
-                            href={link.uri.startsWith('/category/') ? `${link.uri}` : `/page/${link.uri.replace('/', '')}`}
+                            href={
+                              link.uri.startsWith("/category/")
+                                ? `${link.uri}`
+                                : `/page/${link.uri.replace("/", "")}`
+                            }
                             className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
                           >
                             {link.label}
                           </Link>
-                          {link.childItems && link.childItems.nodes.length > 0 && (
-                            <ul
-                              tabIndex={0}
-                              className="dropdown-content z-[9] menu p-2 px-0 shadow-xl bg-base-100 rounded-lg min-w-max mt-4"
-                            >
-                              {link.childItems.nodes.map((subLink, subIndex) => (
-                                <li key={subIndex}>
-                                  <Link
-                                    href={`/blog${subLink.uri}`}
-                                    className="text-[15px] font-semibold py-[3px]"
-                                  >
-                                    {subLink.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
+                          {link.childItems &&
+                            link.childItems.nodes.length > 0 && (
+                              <ul
+                                tabIndex={0}
+                                className="dropdown-content z-[9] menu p-2 px-0 shadow-xl bg-base-100 rounded-lg min-w-max mt-4"
+                              >
+                                {link.childItems.nodes.map(
+                                  (subLink, subIndex) => (
+                                    <li key={subIndex}>
+                                      <Link
+                                        href={`/blog${subLink.uri}`}
+                                        className="text-[15px] font-semibold py-[3px]"
+                                      >
+                                        {subLink.label}
+                                      </Link>
+                                    </li>
+                                  )
+                                )}
+                              </ul>
+                            )}
                         </li>
                       ))}
-                  </ul>
                 </ul>
               </div>
 
@@ -121,8 +136,7 @@ const Navbar = () => {
                   href="/"
                   className="calltoaction font-bold py-[5px] px-3 bg-amber-400 hover:bg-amber-500 transition-all text-black rounded ml-3 text-md"
                 >
-                  Coffee{" "}
-                  <PiCoffeeBeanDuotone className="h-5 w-5 inline-block -mt-[2px]" />
+                  Best Machines
                 </Link>
               </div>
             </div>

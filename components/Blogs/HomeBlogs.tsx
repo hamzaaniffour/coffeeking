@@ -112,7 +112,7 @@ export default async function AllBlogPosts() {
                       href={`/category/${category.node.slug}`}
                     >
                       <span className="text-slate-500 text-[13px] tracking-wider font-medium uppercase">
-                        {index > 0 && ", "}
+                        {index > 0 && <span className="mr-1">, </span>}
                         {category.node.name}
                       </span>
                     </Link>

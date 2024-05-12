@@ -72,15 +72,15 @@ export default async function AllBlogPosts() {
         Commercial Coffee Machine Reviews
       </h2>
       <p className="text-base text-black font-medium mb-6">
-        Looking to upgrade your coffee setup? Dive into our detailed reviews
-        of commercial coffee machines, covering everything from
-        high-performance espresso machines to reliable drip coffee makers and
-        convenient pod machines. 
+        Looking to upgrade your coffee setup? Dive into our detailed reviews of
+        commercial coffee machines, covering everything from high-performance
+        espresso machines to reliable drip coffee makers and convenient pod
+        machines.
       </p>
       <p className="text-base text-black font-medium mb-6">
         We explore each machine&#39;s features, brewing capacity, methods,
         programmability, and ease of cleaning, ensuring you make an informed
-        choice. Unsure which type is right for you? 
+        choice. Unsure which type is right for you?
       </p>
       <p className="text-base text-black font-medium mb-9">
         Our guides and comparisons clarify the differences between machines,
@@ -124,7 +124,7 @@ export default async function AllBlogPosts() {
                       href={`/category/${category.node.slug}`}
                     >
                       <span className="text-slate-500 text-[13px] tracking-wider font-medium uppercase">
-                        {index > 0 && ", "}
+                        {index > 0 && <span className="mr-1">, </span>}
                         {category.node.name}
                       </span>
                     </Link>
@@ -142,7 +142,10 @@ export default async function AllBlogPosts() {
       </div>
       <div className="max-w-[400px] mx-auto flex justify-center items-center mt-8">
         <Link href="/category/reviews">
-          <button className="py-2 px-6 rounded-full font-bold w-full bg-black text-white">Discover more Reviews <GoArrowUpRight className="inline-block text-amber-400 h-4 w-4 -mt-0.5" /></button>
+          <button className="py-2 px-6 rounded-full font-bold w-full bg-black text-white">
+            Discover more Reviews{" "}
+            <GoArrowUpRight className="inline-block text-amber-400 h-4 w-4 -mt-0.5" />
+          </button>
         </Link>
       </div>
     </div>

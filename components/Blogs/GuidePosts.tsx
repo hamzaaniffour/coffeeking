@@ -114,7 +114,7 @@ export default async function AllBlogPosts() {
                       href={`/category/${category.node.slug}`}
                     >
                       <span className="text-slate-500 text-[13px] tracking-wider font-medium uppercase">
-                        {index > 0 && ", "}
+                        {index > 0 && <span className="mr-1">, </span>}
                         {category.node.name}
                       </span>
                     </Link>
@@ -132,7 +132,10 @@ export default async function AllBlogPosts() {
       </div>
       <div className="max-w-[400px] mx-auto flex justify-center items-center mt-8">
         <Link href="/category/guides">
-          <button className="py-2 px-6 rounded-full font-bold w-full bg-black text-white">Discover more Guides <GoArrowUpRight className="inline-block text-amber-400 h-4 w-4 -mt-0.5" /></button>
+          <button className="py-2 px-6 rounded-full font-bold w-full bg-black text-white">
+            Discover more Guides{" "}
+            <GoArrowUpRight className="inline-block text-amber-400 h-4 w-4 -mt-0.5" />
+          </button>
         </Link>
       </div>
     </div>
