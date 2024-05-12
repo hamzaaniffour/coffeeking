@@ -1,81 +1,29 @@
-import Link from "next/link";
-import React from "react";
-import Image from "next/image";
-import { getBlurData } from "@/libs/blur-data-generator";
+import BlogComponent from '@/components/Blogs/BlogComponent'
+import { Metadata } from 'next';
+import React from 'react'
 
-async function getBlogs() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/posts?_embed`
-  );
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  const data = await res.json();
+export const metadata: Metadata = {
+  title: {
+    default: "Blog",
+    template: "%s | Cyclewaycoffee",
 
-  const postsWithCategories = await Promise.all(
-    data.map(async (post: any) => {
-      const categoriesRes = await fetch(
-        `${
-          process.env.NEXT_PUBLIC_BASE_URLS
-        }/wp-json/wp/v2/categories?include=${post.categories.join(",")}`
-      );
-      if (!categoriesRes.ok) {
-        throw new Error("Failed to fetch categories");
-      }
-      const categoriesData = await categoriesRes.json();
-      return { ...post, categoriesData };
-    })
-  );
-
-  return postsWithCategories;
-}
-
-const BlogPage = async () => {
-  const data = await getBlogs();
-  const imageUrl = data[0]._embedded["wp:featuredmedia"][0]?.source_url;
-  const { base64 } = await getBlurData(imageUrl);
-
-  return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-        {data.map((blog: any) => (
-          <div key={blog.slug} className="w-full lg:w-full">
-            {blog.featured_media && blog._embedded["wp:featuredmedia"] && (
-              <Link href={`/blog/${blog.slug}`}>
-                <Image
-                  src={blog._embedded["wp:featuredmedia"][0]?.source_url}
-                  alt={blog.title.rendered}
-                  width={400}
-                  height={300}
-                  className="rounded-lg"
-                  layout="responsive"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  quality={80}
-                  priority
-                  placeholder="blur"
-                  blurDataURL={base64}
-                />
-              </Link>
-            )}
-            <div className="mt-2">
-              {blog.categoriesData.map((category: any, index: any) => (
-                <span
-                  key={category.id}
-                  className="text-slate-500 text-base font-medium"
-                >
-                  {index > 0 && ", "}
-                  {category.name}
-                </span>
-              ))}
-            </div>
-            <h3 className="text-lg lg:text-xl xl:text-xl text-black font-semibold mt-2 leading-6">
-              <Link href={`/blog/${blog.slug}`}>{blog.title.rendered}</Link>
-            </h3>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  },
+  description: "Unlock the Secret to Perfect Coffee Every Time! Find Your Ideal Commercial Coffee Machines Today. Expert Reviews & Top Picks. Compare Prices & Features.",
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: 'index, follow',
+  openGraph: {
+    images: ['https://lift-car.com/tools/wp-content/uploads/2024/04/0_3Xdd_WEaRxryzfLC.webp'],
+  },
 };
 
-export default BlogPage;
+const BlogPage = () => {
+  return (
+    <div>
+      <BlogComponent />
+    </div>
+  )
+}
+
+export default BlogPage

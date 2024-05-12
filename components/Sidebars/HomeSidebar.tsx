@@ -29,7 +29,7 @@ const HomeSidebar = () => {
           Advertisement
         </h1>
         <div className="h-[3px] rounded-full mb-5 w-[174px] bg-gradient-to-r from-amber-800 to-amber-500"></div>
-        <div className="rounded bg-gray-100 h-80"></div>
+        <div className="rounded bg-gray-100 h-[600px] flex justify-center items-center text-xs text-gray-300">ADVERTISEMENT</div>
       </div>
     </>
   );

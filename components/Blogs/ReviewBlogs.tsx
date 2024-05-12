@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getBlurData } from "@/libs/blur-data-generator";
+import { GoArrowUpRight } from "react-icons/go";
 
 export default async function AllBlogPosts() {
   function limitWords(text: string, limit: number): string {
@@ -19,7 +20,7 @@ export default async function AllBlogPosts() {
     body: JSON.stringify({
       query: `
         query getPosts {
-          posts {
+          posts(first: 3, where: {categoryName: "reviews"}) {
             edges {
               node {
                 title
@@ -138,6 +139,11 @@ export default async function AllBlogPosts() {
             </div>
           )
         )}
+      </div>
+      <div className="max-w-[400px] mx-auto flex justify-center items-center mt-8">
+        <Link href="/category/reviews">
+          <button className="py-2 px-6 rounded-full font-bold w-full bg-black text-white">Discover more Reviews <GoArrowUpRight className="inline-block text-amber-400 h-4 w-4 -mt-0.5" /></button>
+        </Link>
       </div>
     </div>
   );

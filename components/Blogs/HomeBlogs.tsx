@@ -19,7 +19,7 @@ export default async function AllBlogPosts() {
     body: JSON.stringify({
       query: `
         query getPosts {
-          posts {
+          posts(first: 6) {
             edges {
               node {
                 title
