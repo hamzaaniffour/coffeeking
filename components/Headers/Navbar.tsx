@@ -136,7 +136,7 @@ const Navbar = () => {
                   href="/"
                   className="calltoaction font-bold py-[5px] px-3 bg-amber-400 hover:bg-amber-500 transition-all text-black rounded ml-3 text-md"
                 >
-                  Best Machines
+                  Products
                 </Link>
               </div>
             </div>

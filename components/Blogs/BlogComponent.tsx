@@ -1,5 +1,5 @@
 "use client";
-import { blogPage } from "@/graphql/post_reviews";
+import { blogPage } from "@/graphql/allposts";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";

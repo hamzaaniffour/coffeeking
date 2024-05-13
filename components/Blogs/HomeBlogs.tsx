@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getBlurData } from "@/libs/blur-data-generator";
+import { GRAPHQL_URL, GET_RANDOM_POSTS } from "@/graphql/home_blogs";
 
 export default async function AllBlogPosts() {
   function limitWords(text: string, limit: number): string {
@@ -11,37 +12,13 @@ export default async function AllBlogPosts() {
     return text;
   }
 
-  const { data } = await fetch(`${process.env.NEXT_PUBLIC_GRAPHQL_URL}`, {
-    method: "POST",
+  const { data } = await fetch(GRAPHQL_URL, {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      query: `
-        query getPosts {
-          posts(first: 6) {
-            edges {
-              node {
-                title
-                slug
-                featuredImage {
-                  node {
-                    sourceUrl
-                  }
-                }
-                categories {
-                  edges {
-                    node {
-                      slug
-                      name
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
+      query: GET_RANDOM_POSTS,
     }),
     next: { revalidate: 10 },
   }).then((res) => res.json());
@@ -119,7 +96,7 @@ export default async function AllBlogPosts() {
                   )
                 )}
               </div>
-              <h3 className="text-lg lg:text-base xl:text-base text-black font-semibold mt-1 leading-6">
+              <h3 className="text-lg lg:text-base xl:text-base text-black font-bold mt-1 leading-6">
                 <Link href={`/blog/${post.node.slug}`}>
                   {limitWords(post.node.title, 8)}
                 </Link>

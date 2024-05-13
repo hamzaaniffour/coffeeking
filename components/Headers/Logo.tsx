@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import cyclewaycoffee from '@/public/assets/cyclewaycoffee.svg'
+import cyclewaycoffee from '@/public/assets/coffee-logo.svg'
 
 const Logo = () => {
   return (
@@ -11,7 +11,7 @@ const Logo = () => {
           src={cyclewaycoffee}
           alt="logo"
           priority={true}
-          width={220}
+          width={200}
           height={50}
         />
       </Link>
