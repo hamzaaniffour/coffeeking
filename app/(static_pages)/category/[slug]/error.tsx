@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
-import { useRouter } from "next/navigation";
+import Redirection from '@/components/Redirection';
+import React from 'react'
 
 export default function error() {
-  const router = useRouter();
-
-  router.push("/not-found");
-
-  return <></>;
+  return (
+    <div>
+        <Redirection />
+    </div>
+  )
 }
