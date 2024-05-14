@@ -58,9 +58,6 @@ const Search = () => {
   return (
     <div>
       <div className="max-w-[400px] mx-auto">
-        <h3 className="text-black text-xl text-left font-bold mb-2 uppercase">
-          Where do you want to go?
-        </h3>
         <form className="" onSubmit={handleSearch}>
           <label
             htmlFor="default-search"

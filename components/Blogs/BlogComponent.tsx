@@ -75,6 +75,11 @@ const BlogsPage = () => {
                 </h1>
               </div>
               <div className="mb-8">
+                <div className="max-w-[400px] mx-auto">
+                  <h3 className="text-black text-xl text-left font-bold mb-2 uppercase">
+                    Where do you want to go?
+                  </h3>
+                </div>
                 <Search />
               </div>
             </header>
