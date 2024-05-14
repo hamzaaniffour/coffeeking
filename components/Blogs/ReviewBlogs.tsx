@@ -14,9 +14,9 @@ export default async function AllBlogPosts() {
   }
 
   const { data } = await fetch(GRAPHQL_URL, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       query: GET_REVIEW_POSTS,
@@ -99,16 +99,21 @@ export default async function AllBlogPosts() {
                     <Link
                       key={category.node.slug}
                       href={`/category/${category.node.slug}`}
+                      style={{
+                        padding: "10px 0px",
+                        margin: "5px 0px",
+                        touchAction: "none",
+                      }}
                     >
                       <span className="text-slate-500 text-[13px] tracking-wider font-medium uppercase">
-                        {index > 0 && <span className="mr-1">, </span>}
+                        {index > 0 && <span>, </span>}
                         {category.node.name}
                       </span>
                     </Link>
                   )
                 )}
               </div>
-              <h3 className="text-lg lg:text-base xl:text-base text-black font-bold mt-1 leading-6">
+              <h3 className="text-lg lg:text-base xl:text-base text-black font-bold mt-2 leading-6">
                 <Link href={`/blog/${post.node.slug}`}>
                   {limitWords(post.node.title, 8)}
                 </Link>
