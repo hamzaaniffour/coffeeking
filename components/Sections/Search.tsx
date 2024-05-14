@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react";
 import { IoMdSearch } from "react-icons/io";
 import Image from "next/image";
 import { TfiClose } from "react-icons/tfi";
+import Link from "next/link";
 
 interface SearchResult {
   featured_media_url: string;
   id: number;
   title: { rendered: string };
+  slug: string;
   featured_media: number;
 }
 
@@ -21,12 +23,7 @@ const Search = () => {
     const fetchMedia = async () => {
       const mediaPromises = searchResults.map((result) =>
         fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/media/${result.featured_media}`,
-          {
-            headers: {
-              Authorization: "Bearer YOUR_TOKEN_HERE",
-            },
-          }
+          `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/media/${result.featured_media}`
         ).then((response) => response.json())
       );
       const mediaData = await Promise.all(mediaPromises);
@@ -35,6 +32,7 @@ const Search = () => {
         featured_media_url: mediaData[index].source_url,
       }));
       setSearchResults(updatedResults);
+      // console.log(updatedResults)
       setLoading(false);
     };
 
@@ -115,13 +113,13 @@ const Search = () => {
                   className="flex justify-center items-center"
                   onClick={() => setShowResults(false)}
                 >
-                  <TfiClose className="h-6 w-6 text-gray-400" />
+                  <TfiClose className="h-6 w-6 text-gray-400 relative right-4 -top-2 lg:relative lg:right-0 lg:-top-0 xl:relative xl:right-0 xl:-top-0" />
                 </button>
               </div>
-              <h2 className="text-3xl text-black font-bold mb-2 text-center">
+              <h2 className="text-3xl text-black font-bold mb-1.5">
                 Search Results for:
               </h2>
-              <p className="text-center text-xl text-transparent bg-clip-text bg-gradient-to-r from-violet-800 to-violet-300 font-bold mb-10">
+              <p className="text-left text-xl text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-600 font-bold mb-10">
                 {query}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-5">
@@ -134,23 +132,25 @@ const Search = () => {
                     ))
                   : searchResults.map((result) => (
                       <div key={result.id} className="mb-4">
-                        <div className="h-[280px] relative w-full rounded">
-                          {result.featured_media_url && (
+                        {result.featured_media_url && (
+                          <Link href={`/blog/${result.slug}`}>
                             <Image
                               src={result.featured_media_url}
-                              className="rounded"
                               alt={result.title.rendered}
+                              width={400}
+                              height={300}
+                              className="rounded-lg"
+                              layout="responsive"
+                              sizes="(max-width: 768px) 100vw, 33vw"
                               quality={100}
-                              fill
+                              priority
                               placeholder="blur"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              objectFit="cover"
                               blurDataURL={result.featured_media_url}
                             />
-                          )}
-                        </div>
-                        <h3 className="text-xl text-black transition-all hover:text-transparent bg-clip-text bg-gradient-to-r from-violet-800 to-violet-300 font-bold leading-[28px] mt-3 mb-3">
-                          {result.title.rendered}
+                          </Link>
+                        )}
+                        <h3 className="text-xl text-black transition-all hover:text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-600 font-bold leading-[28px] mt-3 mb-3">
+                          <Link href={`/blog/${result.slug}`}>{result.title.rendered}</Link>
                         </h3>
                       </div>
                     ))}

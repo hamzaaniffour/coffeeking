@@ -42,28 +42,56 @@ const Navbar = () => {
           <nav className="bg-black flex justify-center items-center shadow w-full px-5 lg:px-0 xl:px-0 fixed top-0 z-50">
             <div className="navbar max-w-[1250px] mx-auto flex justify-center !p-0 !h-0">
               {sidenav && (
-                <div className="bg-black bg-opacity-90 h-full w-full fixed top-0 left-0 z-50">
-                  <div className="!w-[65%] bg-white transition-all pt-12 z-50 block shadow fixed left-0 top-0 bottom-0 h-full lg:hidden xl:hidden">
-                    <ul className="pl-6">
-                      {links.map((link, index) => (
-                        <li className="mb-5" key={index}>
+                <div
+                  className="bg-black bg-opacity-90 h-full w-full fixed top-0 left-0 z-50"
+                  onClick={handleSideNav}
+                >
+                  <div className="!w-[70%] bg-black transition-all pt-12 z-50 block shadow fixed left-0 top-0 bottom-0 h-full lg:hidden xl:hidden">
+                    <ul className="pl-10 text-left">
+                      {headerMenu.map((link, index) => (
+                        <li
+                          key={index}
+                          className=""
+                        >
                           <Link
-                            onClick={handleSideNav}
-                            href={`${link.slug}`}
-                            tabIndex={0}
-                            className="text-xl text-black font-semibold uppercase"
+                            href={
+                              link.uri.startsWith("/category/")
+                                ? `${link.uri}`
+                                : `/page/${link.uri.replace("/", "")}`
+                            }
+                            className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
                           >
-                            {link.title}
+                            {link.label}
                           </Link>
+                          {link.childItems &&
+                            link.childItems.nodes.length > 0 && (
+                              <ul
+                                tabIndex={0}
+                                className=""
+                              >
+                                {link.childItems.nodes.map(
+                                  (subLink, subIndex) => (
+                                    <li key={subIndex}>
+                                      <Link
+                                        href={`/blog${subLink.uri}`}
+                                        className="text-[15px] font-semibold py-[3px]"
+                                      >
+                                        {subLink.label}
+                                      </Link>
+                                    </li>
+                                  )
+                                )}
+                              </ul>
+                            )}
                         </li>
                       ))}
                     </ul>
                   </div>
                   <button
                     onClick={handleSideNav}
-                    className="bg-black flex justify-center items-center bg-opacity-90 rounded-full h-11 w-11 cursor-pointer absolute top-5 right-5"
+                    className="bg-black flex justify-center border-2 border-slate-700 items-center bg-opacity-90 rounded-full h-11 w-11 cursor-pointer absolute top-5 right-5"
                   >
-                    <IoCloseSharp className="text-black h-7 w-7" />
+                    <IoCloseSharp className="text-white h-7 w-7" />
                   </button>
                 </div>
               )}
