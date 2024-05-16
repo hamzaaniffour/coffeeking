@@ -1,4 +1,4 @@
-import React from "react";
+import React, { cache } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,6 +10,7 @@ const getSinglePost = async (postSlug: string) => {
       headers: {
         "Content-Type": "application/json",
       },
+      cache: "no-store",
     }
   );
   const data = await response.json();

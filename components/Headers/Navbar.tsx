@@ -35,6 +35,18 @@ const Navbar = () => {
     setSideNav(!sidenav);
   };
 
+  const getURL = (uri: any) => {
+    if (uri.toLowerCase().split(" ").includes("/")) {
+      return uri;
+    } else if (uri.includes("/category")) {
+      return `${uri}`;
+    }else if (uri.includes("/blog")) {
+      return `${uri}`;
+    } else {
+      return `/page${uri}`;
+    }
+  };
+
   return (
     <>
       <div className="">
@@ -49,10 +61,7 @@ const Navbar = () => {
                   <div className="!w-[70%] bg-black transition-all pt-12 z-50 block shadow fixed left-0 top-0 bottom-0 h-full lg:hidden xl:hidden">
                     <ul className="pl-10 text-left">
                       {headerMenu.map((link, index) => (
-                        <li
-                          key={index}
-                          className=""
-                        >
+                        <li key={index} className="">
                           <Link
                             href={
                               link.uri.startsWith("/category/")
@@ -65,10 +74,7 @@ const Navbar = () => {
                           </Link>
                           {link.childItems &&
                             link.childItems.nodes.length > 0 && (
-                              <ul
-                                tabIndex={0}
-                                className=""
-                              >
+                              <ul tabIndex={0} className="">
                                 {link.childItems.nodes.map(
                                   (subLink, subIndex) => (
                                     <li key={subIndex}>
@@ -125,11 +131,7 @@ const Navbar = () => {
                           className="dropdown dropdown-hover py-5"
                         >
                           <Link
-                            href={
-                              link.uri.startsWith("/category/")
-                                ? `${link.uri}`
-                                : `/page/${link.uri.replace("/", "")}`
-                            }
+                            href={getURL(link.uri)}
                             className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
                           >
                             {link.label}

@@ -7,7 +7,7 @@ import Ratings from "@/components/Blogs/Ratings";
 
 async function getBlogs() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/products?_embed`, {
-    next: { revalidate: 10 },
+    cache: "no-store",
   });
   if (!res.ok) {
     throw new Error("Failed to fetch data");

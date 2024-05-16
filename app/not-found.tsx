@@ -43,15 +43,34 @@ const NotFound = () => {
     //   </Link>
     // </div>
     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-10 py-[4rem]">
-      <div className="flex justify-start items-center">
-        <h4 className="text-[13.6em] font-bold text-[#cecece]">404</h4>
+      <div className="flex justify-center lg:justify-start xl:justify-start items-center">
+        <div className="text-8xl lg:text-[13.6em] xl:text-[13.6em] font-bold text-[#cecece]">404</div>
       </div>
       <div className="flex justify-center items-start flex-col">
-        <h1 className="text-3xl text-black mb-3 font-bold text-left">Whoops! That Page Is Gone.</h1>
-        <p className="text-md text-slate-500 text-left mb-5">You can navigate through our list or use this search bar:</p>
+        <div className="text-3xl text-black mb-3 font-bold text-center lg:text-left xl:text-left">Whoops! But this page does not exist..</div>
+        <p className="text-md text-slate-500 text-center lg:text-left xl:text-left mb-5">You can navigate through our list or use this search bar:</p>
         <div className="h-[5px] w-[100px] bg-gray-200 mb-7"></div>
-        <div className="mb-5">
+        <div className="mb-8 !w-full">
             <Search />
+        </div>
+        <div className="">
+            <ul className="flex justify-center items-center gap-2">
+                <li className="">
+                    <Link href="/" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Homepage</Link>
+                </li>
+                <span className="h-2 w-2 bg-slate-300 rounded-full ml-1 mr-1"></span>
+                <li className="">
+                    <Link href="/blog" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Blog</Link>
+                </li>
+                <span className="h-2 w-2 bg-slate-300 rounded-full ml-1 mr-1"></span>
+                <li className="">
+                    <Link href="/blog" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Privacy Policy</Link>
+                </li>
+                <span className="h-2 w-2 bg-slate-300 rounded-full ml-1 mr-1"></span>
+                <li className="">
+                    <Link href="/blog" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Contact Us</Link>
+                </li>
+            </ul>
         </div>
       </div>
     </div>
