@@ -4,9 +4,11 @@ import Link from "next/link";
 import { links } from "@/libs/main-menu";
 import { IoCloseSharp } from "react-icons/io5";
 import { RiMenu2Line } from "react-icons/ri";
-import { PiCoffeeBeanDuotone } from "react-icons/pi";
 import { HeaderMenu } from "@/graphql/menu_items";
 import Logo from "@/components/Headers/Logo";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import Image from "next/image";
+import cyclewaycoffee from '@/public/assets/coffee-logo.svg'
 
 interface MenuItem {
   label: string;
@@ -20,6 +22,12 @@ const Navbar = () => {
   const [sidenav, setSideNav] = useState<boolean>(false);
   const [headerMenu, setHeaderMenu] = useState<MenuItem[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
+
+  const toggleMenu = (index: number) => {
+    setOpenMenuIndex(openMenuIndex === index ? null : index);
+  };
 
   useEffect(() => {
     const fetchMenuData = async () => {
@@ -40,7 +48,7 @@ const Navbar = () => {
       return uri;
     } else if (uri.includes("/category")) {
       return `${uri}`;
-    }else if (uri.includes("/blog")) {
+    } else if (uri.includes("/blog")) {
       return `${uri}`;
     } else {
       return `/page${uri}`;
@@ -54,33 +62,57 @@ const Navbar = () => {
           <nav className="bg-black flex justify-center items-center shadow w-full px-5 lg:px-0 xl:px-0 fixed top-0 z-50">
             <div className="navbar max-w-[1250px] mx-auto flex justify-center !p-0 !h-0">
               {sidenav && (
-                <div
-                  className="bg-black bg-opacity-90 h-full w-full fixed top-0 left-0 z-50"
-                  onClick={handleSideNav}
-                >
-                  <div className="!w-[70%] bg-black transition-all pt-12 z-50 block shadow fixed left-0 top-0 bottom-0 h-full lg:hidden xl:hidden">
-                    <ul className="pl-10 text-left">
+                <div className="bg-black bg-opacity-90 h-full w-full fixed top-0 left-0 z-50">
+                  <div className="!w-[70%] bg-black transition-all pt-4 z-50 block shadow fixed left-0 top-0 bottom-0 h-full lg:hidden xl:hidden">
+                    <Link href="/" className="text-amber-400 w-full flex justify-center items-center" onClick={handleSideNav}>
+                      <Image
+                        src={cyclewaycoffee}
+                        className="mb-8"
+                        alt="logo"
+                        priority={true}
+                        width={170}
+                        height={50}
+                      />
+                    </Link>
+                    <ul className="flex flex-col">
                       {headerMenu.map((link, index) => (
-                        <li key={index} className="">
-                          <Link
-                            href={
-                              link.uri.startsWith("/category/")
-                                ? `${link.uri}`
-                                : `/page/${link.uri.replace("/", "")}`
-                            }
-                            className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
+                        <li key={index} className="relative mb-3">
+                          <div
+                            className="flex items-center justify-between"
+                            onClick={() => toggleMenu(index)}
                           >
-                            {link.label}
-                          </Link>
+                            <Link
+                              href={getURL(link.uri)}
+                              className="text-lg uppercase outline-none outline-offset-0 font-semibold text-white px-3"
+                              onClick={handleSideNav}
+                            >
+                              {link.label}
+                            </Link>
+                            {link.childItems &&
+                              link.childItems.nodes.length > 0 && (
+                                <button className="text-white flex justify-end items-center right-2 absolute p-[4px] h-[30px] w-[40px]">
+                                  {openMenuIndex === index ? (
+                                    <IoIosArrowUp className="text-amber-500 font-bold h-6 w-6" />
+                                  ) : (
+                                    <IoIosArrowDown className="text-amber-500 font-bold h-6 w-6" />
+                                  )}
+                                </button>
+                              )}
+                          </div>
                           {link.childItems &&
                             link.childItems.nodes.length > 0 && (
-                              <ul tabIndex={0} className="">
+                              <ul
+                                className={`${
+                                  openMenuIndex === index ? "block" : "hidden"
+                                } mt-3 mb-3 pl-5`}
+                              >
                                 {link.childItems.nodes.map(
                                   (subLink, subIndex) => (
-                                    <li key={subIndex}>
+                                    <li key={subIndex} className="mb-1">
                                       <Link
                                         href={`/blog${subLink.uri}`}
-                                        className="text-[15px] font-semibold py-[3px]"
+                                        className="text-[15px] font-semibold py-[3px] block text-white"
+                                        onClick={handleSideNav}
                                       >
                                         {subLink.label}
                                       </Link>
