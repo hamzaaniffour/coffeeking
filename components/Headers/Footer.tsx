@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { footerlinks } from "@/libs/footer-menu";
 import Link from "next/link";
-import { FaAngleRight, FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaAngleRight, FaFacebook, FaInstagram, FaPinterest, FaTwitter } from "react-icons/fa";
 
 interface SettingsData {
   allSettings: {
@@ -51,12 +51,10 @@ const Footer = () => {
                   <div className="skeleton h-[15px] w-[120px] rounded-none"></div>
                 )}
               </h4>
-              <p className="max-w-[320px] text-left text-md text-black font-medium mb-2">
-                Coffeeblog.co.uk is part of the Amazon Services LLC Associates
-                Program, an affiliate advertising initiative designed to help
-                websites earn advertising fees by linking to amazon.co.uk.
+              <p className="max-w-[320px] text-left text-[15px] text-black font-medium mb-2">
+              Cyclewaycoffee.net participates in affiliate programs. This means we may earn a small commission if you purchase a product after clicking a link on our site. You won't pay any extra and it helps keep the coffee flowing!
               </p>
-              <ul className="flex justify-start items-center gap-1 mt-4">
+              <ul className="flex justify-start items-center gap-1.5 mt-4">
                 <li>
                   <Link href="/" aria-label="Follow us on Facebook">
                     <FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
@@ -64,17 +62,17 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link href="/" aria-label="Follow us on Instagram">
-                    <FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
+                    <FaFacebook className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
                   </Link>
                 </li>
                 <li>
                   <Link href="/" aria-label="Follow us on Twitter">
-                    <FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
+                    <FaTwitter className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
                   </Link>
                 </li>
                 <li>
                   <Link href="/" aria-label="Follow us on Pinterest">
-                    <FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
+                    <FaPinterest className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
                   </Link>
                 </li>
               </ul>
@@ -99,7 +97,7 @@ const Footer = () => {
             </div>
             <div className="mt-10 lg:mt-0 xl:mt-0">
             <h4 className="mb-4 text-[22px] text-[#000000] font-bold uppercase">
-                Best Brands
+                Categories
               </h4>
               <ul className="">
                 {footerlinks.map((footerlink, index) => (

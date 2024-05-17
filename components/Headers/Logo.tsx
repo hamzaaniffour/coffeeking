@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import cyclewaycoffee from '@/public/assets/coffee-logo.svg'
+import cyclewaycoffee from '@/public/assets/cwcv2.svg'
 
 const Logo = () => {
   return (

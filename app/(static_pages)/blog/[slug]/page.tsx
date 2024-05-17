@@ -39,6 +39,7 @@ export async function generateMetadata({
       headers: {
         "Content-Type": "application/json",
       },
+      cache: 'no-store',
     }
   );
   const tagsData = await tagsResponse.json();

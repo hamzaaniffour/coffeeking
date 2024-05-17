@@ -8,7 +8,7 @@ import { HeaderMenu } from "@/graphql/menu_items";
 import Logo from "@/components/Headers/Logo";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Image from "next/image";
-import cyclewaycoffee from '@/public/assets/coffee-logo.svg'
+import cyclewaycoffee from "@/public/assets/coffee-logo.svg";
 
 interface MenuItem {
   label: string;
@@ -63,27 +63,17 @@ const Navbar = () => {
             <div className="navbar max-w-[1250px] mx-auto flex justify-center !p-0 !h-0">
               {sidenav && (
                 <div className="bg-black bg-opacity-90 h-full w-full fixed top-0 left-0 z-50">
-                  <div className="!w-[70%] bg-black transition-all pt-4 z-50 block shadow fixed left-0 top-0 bottom-0 h-full lg:hidden xl:hidden">
-                    <Link href="/" className="text-amber-400 w-full flex justify-center items-center" onClick={handleSideNav}>
-                      <Image
-                        src={cyclewaycoffee}
-                        className="mb-8"
-                        alt="logo"
-                        priority={true}
-                        width={170}
-                        height={50}
-                      />
-                    </Link>
+                  <div className="!w-[70%] bg-black transition-all pt-10 z-50 block shadow fixed left-0 top-0 bottom-0 h-full lg:hidden xl:hidden">
                     <ul className="flex flex-col">
                       {headerMenu.map((link, index) => (
-                        <li key={index} className="relative mb-3">
+                        <li key={index} className="relative mb-5 pl-2">
                           <div
                             className="flex items-center justify-between"
                             onClick={() => toggleMenu(index)}
                           >
                             <Link
                               href={getURL(link.uri)}
-                              className="text-lg uppercase outline-none outline-offset-0 font-semibold text-white px-3"
+                              className="text-xl uppercase outline-none outline-offset-0 font-semibold text-white px-3"
                               onClick={handleSideNav}
                             >
                               {link.label}

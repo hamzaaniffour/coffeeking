@@ -1,5 +1,3 @@
-import ShareButtons from "@/components/Blogs/ShareButtons";
-import HomeSidebar from "@/components/Sidebars/HomeSidebar";
 import Link from "next/link";
 import React from "react";
 
@@ -11,6 +9,7 @@ const getSinglePost = async (postSlug: string) => {
       headers: {
         "Content-Type": "application/json",
       },
+      cache: 'no-store',
     }
   );
   const data = await response.json();
