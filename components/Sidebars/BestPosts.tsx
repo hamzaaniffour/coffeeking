@@ -30,7 +30,7 @@ const BestPosts = async () => {
         <h3 className="text-xl text-black font-bold mb-2">Best Articles</h3>
         <div className="h-0.5 w-[100px] bg-amber-400 mb-2"></div>
         <p className="text-slate-500 text-md mb-6 font-medium leading-6">
-          Some of the best content we've published so far.
+          Some of the best content w&#39;'ve published so far.
         </p>
         <div className="">
           <ol className="sidebarlist list-decimal list-inside">
