@@ -52,7 +52,7 @@ const Footer = () => {
                 )}
               </h4>
               <p className="max-w-[320px] text-left text-[15px] text-black font-medium mb-2">
-              Cyclewaycoffee.net participates in affiliate programs. This means we may earn a small commission if you purchase a product after clicking a link on our site. You won't pay any extra and it helps keep the coffee flowing!
+              Cyclewaycoffee.net participates in affiliate programs. This means we may earn a small commission if you purchase a product after clicking a link on our site. You won&lsquo;t pay any extra and it helps keep the coffee flowing!
               </p>
               <ul className="flex justify-start items-center gap-1.5 mt-4">
                 <li>
