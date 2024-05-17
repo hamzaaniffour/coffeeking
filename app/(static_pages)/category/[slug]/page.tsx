@@ -75,7 +75,7 @@ const Category = async ({ params }: { params: { slug: string } }) => {
         {posts.map((post: any) => (
           <div key={post.slug} className="w-full lg:w-full">
             {post._embedded && post._embedded["wp:featuredmedia"] && (
-              <Link href={`/blog/${post.slug}`}>
+              <Link prefetch={false} href={`/blog/${post.slug}`}>
                 <Image
                   src={post._embedded["wp:featuredmedia"][0].source_url}
                   alt={post.title.rendered}
@@ -94,7 +94,7 @@ const Category = async ({ params }: { params: { slug: string } }) => {
               </Link>
             )}
             <h3 className="text-lg lg:text-xl xl:text-xl text-black font-semibold mt-2 leading-6">
-              <Link href={`/blog/${post.slug}`}>{post.title.rendered}</Link>
+              <Link prefetch={false} href={`/blog/${post.slug}`}>{post.title.rendered}</Link>
             </h3>
 
             {/* <div className="flex justify-center items-center mb-8">

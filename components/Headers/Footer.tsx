@@ -56,22 +56,22 @@ const Footer = () => {
               </p>
               <ul className="flex justify-start items-center gap-1.5 mt-4">
                 <li>
-                  <Link href="/" aria-label="Follow us on Facebook">
+                  <Link prefetch={false} href="/" aria-label="Follow us on Facebook">
                     <FaInstagram className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" aria-label="Follow us on Instagram">
+                  <Link prefetch={false} href="/" aria-label="Follow us on Instagram">
                     <FaFacebook className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" aria-label="Follow us on Twitter">
+                  <Link prefetch={false} href="/" aria-label="Follow us on Twitter">
                     <FaTwitter className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" aria-label="Follow us on Pinterest">
+                  <Link prefetch={false} href="/" aria-label="Follow us on Pinterest">
                     <FaPinterest className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
                   </Link>
                 </li>
@@ -85,7 +85,7 @@ const Footer = () => {
                 {footerlinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
                     <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" />
-                    <Link
+                    <Link prefetch={false}
                       href={footerlink.slug}
                       className="text-md text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
                     >
@@ -103,7 +103,7 @@ const Footer = () => {
                 {footerlinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
                     <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" />
-                    <Link
+                    <Link prefetch={false}
                       href={footerlink.slug}
                       className="text-md text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
                     >
@@ -121,7 +121,7 @@ const Footer = () => {
                 {footerlinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
                     <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" />
-                    <Link
+                    <Link prefetch={false}
                       href={footerlink.slug}
                       className="text-md text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
                     >

@@ -69,10 +69,10 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
                 <div className="text-sm breadcrumbs mb-3">
                   <ul>
                     <li>
-                      <Link href="/">Home</Link>
+                      <Link prefetch={false} href="/">Home</Link>
                     </li>
                     <li>
-                      <Link href="/blog">Blog</Link>
+                      <Link prefetch={false} href="/blog">Blog</Link>
                     </li>
                     <li className="font-semibold">{post.title.rendered}</li>
                   </ul>

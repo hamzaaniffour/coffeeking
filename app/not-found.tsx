@@ -35,7 +35,7 @@ const NotFound = () => {
     //       to the homepage.
     //     </p>
     //   </div>
-    //   <Link
+    //   <Link prefetch={false}
     //     href="/"
     //     className="backhome py-2 text-black !transition-all px-3 rounded bg-white hover:bg-[#F0F0F0] font-semibold"
     //   >
@@ -56,19 +56,19 @@ const NotFound = () => {
         <div className="">
             <ul className="flex justify-center items-center gap-2">
                 <li className="">
-                    <Link href="/" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Homepage</Link>
+                    <Link prefetch={false} href="/" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Homepage</Link>
                 </li>
                 <span className="h-2 w-2 bg-slate-300 rounded-full ml-1 mr-1"></span>
                 <li className="">
-                    <Link href="/blog" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Blog</Link>
+                    <Link prefetch={false} href="/blog" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Blog</Link>
                 </li>
                 <span className="h-2 w-2 bg-slate-300 rounded-full ml-1 mr-1"></span>
                 <li className="">
-                    <Link href="/blog" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Privacy Policy</Link>
+                    <Link prefetch={false} href="/blog" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Privacy Policy</Link>
                 </li>
                 <span className="h-2 w-2 bg-slate-300 rounded-full ml-1 mr-1"></span>
                 <li className="">
-                    <Link href="/blog" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Contact Us</Link>
+                    <Link prefetch={false} href="/blog" className="text-slate-600 hover:text-amber-700 font-semibold text-base lg:text-lg xl:text-lg">Contact Us</Link>
                 </li>
             </ul>
         </div>

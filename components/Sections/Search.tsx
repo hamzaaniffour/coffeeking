@@ -130,7 +130,7 @@ const Search = () => {
                   : searchResults.map((result) => (
                       <div key={result.id} className="mb-4">
                         {result.featured_media_url && (
-                          <Link href={`/blog/${result.slug}`}>
+                          <Link prefetch={false} href={`/blog/${result.slug}`}>
                             <Image
                               src={result.featured_media_url}
                               alt={result.title.rendered}
@@ -147,7 +147,7 @@ const Search = () => {
                           </Link>
                         )}
                         <h3 className="text-xl text-black transition-all hover:text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-600 font-bold leading-[28px] mt-3 mb-3">
-                          <Link href={`/blog/${result.slug}`}>{result.title.rendered}</Link>
+                          <Link prefetch={false} href={`/blog/${result.slug}`}>{result.title.rendered}</Link>
                         </h3>
                       </div>
                     ))}

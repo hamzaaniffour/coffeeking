@@ -36,7 +36,7 @@ const HomeProducts = async () => {
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-7">
         {data.map((blog: any) => (
-          <Link key={blog.id} href={`${blog.affiliate_link}`} target="_blank">
+          <Link prefetch={false} key={blog.id} href={`${blog.affiliate_link}`} target="_blank">
             <div>
               <div className="relative w-full">
                 <span className="mask mask-hexagon flex justify-center items-center absolute -top-3 -left-3 z-10 bg-slate-950 shadow-orange-500 text-white text-base h-14 w-14 font-bold">{blog.discount}</span>
@@ -62,7 +62,7 @@ const HomeProducts = async () => {
         ))}
       </div>
       <div className="max-w-[400px] mx-auto flex justify-center items-center mt-8">
-        <Link href="https://www.amazon.com/" target="_blank">
+        <Link prefetch={false} href="https://www.amazon.com/" target="_blank">
           <button className="py-2 px-6 rounded-full font-bold w-full bg-black text-white">See more products on Amazon <GoArrowUpRight className="inline-block h-4 w-4 -mt-0.5" /></button>
         </Link>
       </div>

@@ -72,6 +72,7 @@ const Navbar = () => {
                             onClick={() => toggleMenu(index)}
                           >
                             <Link
+                              prefetch={false}
                               href={getURL(link.uri)}
                               className="text-xl uppercase outline-none outline-offset-0 font-semibold text-white px-3"
                               onClick={handleSideNav}
@@ -100,6 +101,7 @@ const Navbar = () => {
                                   (subLink, subIndex) => (
                                     <li key={subIndex} className="mb-1">
                                       <Link
+                                        prefetch={false}
                                         href={`/blog${subLink.uri}`}
                                         className="text-[15px] font-semibold py-[3px] block text-white"
                                         onClick={handleSideNav}
@@ -140,6 +142,7 @@ const Navbar = () => {
                     ? links.map((link, index) => (
                         <li key={index} className="dropdown dropdown-hover">
                           <Link
+                            prefetch={false}
                             href={link.slug}
                             className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
                           >
@@ -153,6 +156,7 @@ const Navbar = () => {
                           className="dropdown dropdown-hover py-5"
                         >
                           <Link
+                            prefetch={false}
                             href={getURL(link.uri)}
                             className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
                           >
@@ -168,6 +172,7 @@ const Navbar = () => {
                                   (subLink, subIndex) => (
                                     <li key={subIndex}>
                                       <Link
+                                        prefetch={false}
                                         href={`/blog${subLink.uri}`}
                                         className="text-[15px] font-semibold py-[3px]"
                                       >
@@ -185,6 +190,7 @@ const Navbar = () => {
 
               <div className="navbar-end">
                 <Link
+                  prefetch={false}
                   href="/"
                   className="calltoaction font-bold py-[5px] px-3 bg-amber-400 hover:bg-amber-500 transition-all text-black rounded ml-3 text-md"
                 >

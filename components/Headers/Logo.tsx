@@ -6,7 +6,7 @@ import cyclewaycoffee from '@/public/assets/cwcv2.svg'
 const Logo = () => {
   return (
     <div>
-      <Link href="/" className="text-amber-400">
+      <Link prefetch={false} href="/" className="text-amber-400">
         <Image
           src={cyclewaycoffee}
           alt="logo"
