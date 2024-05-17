@@ -88,10 +88,10 @@ const Footer = () => {
               <ul className="">
                 {footerlinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
-                    <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" />
+                    <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-amber-600" />
                     <Link
                       href={footerlink.slug}
-                      className="text-md text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
+                      className="text-md text-black transition-all font-semibold"
                     >
                       {footerlink.title}
                     </Link>
@@ -106,10 +106,10 @@ const Footer = () => {
               <ul className="">
                 {footerlinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
-                    <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" />
+                    <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-amber-600" />
                     <Link
                       href={footerlink.slug}
-                      className="text-md text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
+                      className="text-md text-black transition-all font-semibold"
                     >
                       {footerlink.title}
                     </Link>
@@ -124,10 +124,10 @@ const Footer = () => {
               <ul className="">
                 {footerlinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
-                    <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-black" />
+                    <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-amber-600" />
                     <Link
                       href={footerlink.slug}
-                      className="text-md text-transparent bg-clip-text bg-gradient-to-r from-amber-800 to-amber-700 transition-all font-medium"
+                      className="text-md text-black transition-all font-semibold"
                     >
                       {footerlink.title}
                     </Link>

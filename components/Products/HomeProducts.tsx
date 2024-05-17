@@ -36,15 +36,15 @@ const HomeProducts = async () => {
       <h2 className="text-3xl text-black font-bold mb-8">
         Best Coffee Machines in 2024
       </h2>
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-7">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-10">
         {data.map((blog: any) => (
           <Link key={blog.id} href={`${blog.affiliate_link}`} target="_blank">
             <div>
               <div className="relative w-full">
-                <span className="mask mask-hexagon z-20 flex justify-center items-center absolute -top-3 -left-3 bg-slate-950 text-white text-base h-14 w-14 font-bold">
+                <span className="mask mask-hexagon z-20 flex justify-center items-center absolute -top-3 -left-3 bg-red-600 text-white text-base h-14 w-14 font-bold">
                   {blog.discount}
                 </span>
-                <div className="relative w-full h-52 overflow-hidden">
+                <div className="relative w-full h-52 overflow-hidden -mb-1.5">
                   <Image
                     layout="fill"
                     objectFit="contain"
