@@ -65,7 +65,7 @@ export default async function AllBlogPosts() {
           }) => (
             <div key={post.node.slug} className="w-full lg:w-full">
               {post.node.featuredImage && (
-                <Link prefetch={false} href={`/blog/${post.node.slug}`}>
+                <Link href={`/blog/${post.node.slug}`}>
                   <Image
                     src={post.node.featuredImage.node.sourceUrl}
                     alt={post.node.title}
@@ -86,7 +86,7 @@ export default async function AllBlogPosts() {
               <div className="mt-3">
                 {post.node.categories.edges.map(
                   (category: any, index: number) => (
-                    <Link prefetch={false}
+                    <Link
                       key={category.node.slug}
                       href={`/category/${category.node.slug}`}
                       style={{
@@ -104,7 +104,7 @@ export default async function AllBlogPosts() {
                 )}
               </div>
               <h3 className="text-lg lg:text-base xl:text-base text-black font-bold mt-2 leading-6">
-                <Link prefetch={false} href={`/blog/${post.node.slug}`}>
+                <Link href={`/blog/${post.node.slug}`}>
                   {limitWords(post.node.title, 8)}
                 </Link>
               </h3>
@@ -113,7 +113,7 @@ export default async function AllBlogPosts() {
         )}
       </div>
       <div className="max-w-[400px] mx-auto flex justify-center items-center mt-8">
-        <Link prefetch={false} href="/category/guides">
+        <Link href="/category/guides">
           <button className="py-2 px-6 rounded-full font-bold w-full bg-black text-white">
             Discover more Guides{" "}
             <GoArrowUpRight className="inline-block text-amber-400 h-4 w-4 -mt-0.5" />

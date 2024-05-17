@@ -50,7 +50,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
             <div className="text-sm breadcrumbs mb-3">
               <ul>
                 <li>
-                  <Link prefetch={false} href="/">Home</Link>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>Page</li>
                 <li className="font-semibold">{page.title.rendered}</li>

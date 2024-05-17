@@ -6,9 +6,12 @@ import { GoArrowUpRight } from "react-icons/go";
 import Ratings from "@/components/Blogs/Ratings";
 
 async function getBlogs() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/products?_embed`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/products?_embed`,
+    {
+      cache: "no-store",
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -24,7 +27,6 @@ function limitWords(text: string, limit: number): string {
 }
 
 const HomeProducts = async () => {
-
   const data = await getBlogs();
   const imageUrl = data[0].image;
   const { base64 } = await getBlurData(imageUrl);
@@ -36,22 +38,29 @@ const HomeProducts = async () => {
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-7">
         {data.map((blog: any) => (
-          <Link prefetch={false} key={blog.id} href={`${blog.affiliate_link}`} target="_blank">
+          <Link key={blog.id} href={`${blog.affiliate_link}`} target="_blank">
             <div>
               <div className="relative w-full">
-                <span className="mask mask-hexagon flex justify-center items-center absolute -top-3 -left-3 z-10 bg-slate-950 shadow-orange-500 text-white text-base h-14 w-14 font-bold">{blog.discount}</span>
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  width={800}
-                  height={533}
-                  priority
-                  placeholder="blur"
-                  blurDataURL={base64}
-                />
+                <span className="mask mask-hexagon z-20 flex justify-center items-center absolute -top-3 -left-3 bg-slate-950 text-white text-base h-14 w-14 font-bold">
+                  {blog.discount}
+                </span>
+                <div className="relative w-full h-52 overflow-hidden">
+                  <Image
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                    src={blog.image}
+                    alt={blog.title}
+                    className="z-10"
+                    placeholder="blur"
+                    blurDataURL={base64}
+                  />
+                </div>
               </div>
-              <Ratings />
-              <h3 className="text-[13px] lg:text-[13px] xl:text-[13px] text-black font-semibold mb-2 mt-1">
+              <div className="flex justify-center items-center">
+                <Ratings />
+              </div>
+              <h3 className="text-[13px] text-center lg:text-[13px] xl:text-[13px] text-black font-semibold mb-2 mt-1">
                 {limitWords(blog.title, 6)}
               </h3>
               <button className="calltoaction font-bold py-[5px] px-2 bg-[#ffe000] hover:bg-[#ffe000] w-full transition-all text-black rounded text-sm md:text-md lg:text-md xl:text-md">
@@ -62,8 +71,11 @@ const HomeProducts = async () => {
         ))}
       </div>
       <div className="max-w-[400px] mx-auto flex justify-center items-center mt-8">
-        <Link prefetch={false} href="https://www.amazon.com/" target="_blank">
-          <button className="py-2 px-6 rounded-full font-bold w-full bg-black text-white">See more products on Amazon <GoArrowUpRight className="inline-block h-4 w-4 -mt-0.5" /></button>
+        <Link href="https://www.amazon.com/" target="_blank">
+          <button className="py-2 px-6 rounded-full font-bold w-full bg-black text-white">
+            See more products on Amazon{" "}
+            <GoArrowUpRight className="inline-block h-4 w-4 -mt-0.5" />
+          </button>
         </Link>
       </div>
     </div>

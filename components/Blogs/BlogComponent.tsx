@@ -88,7 +88,7 @@ const BlogsPage = () => {
               {posts.map((post, index) => (
                 <div key={`${post.slug}-${index}`} className="w-full lg:w-full">
                   {post.featuredImage && (
-                    <Link prefetch={false} href={`/blog/${post.slug}`}>
+                    <Link href={`/blog/${post.slug}`}>
                       <Image
                         src={`${post.featuredImage.node.sourceUrl}`}
                         alt={`${post.title}`}
@@ -106,7 +106,7 @@ const BlogsPage = () => {
                   )}
                   <div className="relative mb-2 mt-3">
                     {post.categories?.nodes.map((category, index) => (
-                      <Link prefetch={false} href={`/category/${category.slug}`} key={index}>
+                      <Link href={`/category/${category.slug}`} key={index}>
                         <span className="text-slate-500 text-[13px] tracking-wider font-medium uppercase">
                           {index > 0 && <span className="mr-1">, </span>}
                           {category.name}
@@ -115,7 +115,7 @@ const BlogsPage = () => {
                     ))}
                   </div>
                   <h3 className="text-xl text-black font-bold leading-[28px]">
-                    <Link prefetch={false} href={`/blog/${post.slug}`}>
+                    <Link href={`/blog/${post.slug}`}>
                       {limitWords(post.title, 10)}
                     </Link>
                   </h3>

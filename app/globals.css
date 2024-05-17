@@ -273,3 +273,35 @@
 .single-content table a:hover {
   text-decoration: underline;
 }
+
+
+.sidebarlist {
+  list-style: none; /* Remove default list styling */
+  counter-reset: list-counter; /* Initialize a counter */
+}
+
+.sidebarlist li {
+  counter-increment: list-counter; /* Increment the counter */
+  position: relative;
+  padding-left: 2.5rem; /* Adjust space for the custom number */
+}
+
+.sidebarlist li::before {
+  content: counter(list-counter);
+  position: absolute;
+  left: 0;
+  top: 40%;
+  transform: translateY(-50%);
+  background: rgb(255,182,35);
+background: linear-gradient(90deg, rgba(255,182,35,1) 0%, rgba(228,141,2,1) 53%, rgba(255,188,0,1) 100%); /* Background color */
+  color: white; /* Text color */
+  width: 1.5rem; /* Adjust the width as needed */
+  height: 1.5rem; /* Adjust the height as needed */
+  border-radius: 2px; /* Fully rounded */
+  display: flex;
+  padding-top: 1px;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold; /* Adjust the font weight as needed */
+  font-size: 0.875rem; /* Adjust font size as needed */
+}

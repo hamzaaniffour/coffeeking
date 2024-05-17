@@ -19,17 +19,17 @@ const ShareButtons = () => {
           <div className="bg-slate-100 flex justify-center items-center flex-row lg:flex-col xl:flex-col py-2 lg:py-6 xl:py-6 px-4 rounded-full mb-5">
             <ul className="">
               <li className="mb-0 lg:mb-3 xl:mb-3 inline-block md:inline lg:block xl:block mr-3 lg:mr-0 xl:mr-0">
-                <Link prefetch={false} href="/" className="tooltip" data-tip="Share on facebook">
+                <Link href="/" className="tooltip" data-tip="Share on facebook">
                   <FaFacebookF className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
                 </Link>
               </li>
               <li className="mb-0 lg:mb-3 xl:mb-3 inline-block md:inline lg:block xl:block mr-3 lg:mr-0 xl:mr-0">
-                <Link prefetch={false} href="/" className="tooltip" data-tip="Share on LinkedIn">
+                <Link href="/" className="tooltip" data-tip="Share on LinkedIn">
                   <FaLinkedinIn className="h-6 w-6 text-slate-600 hover:text-[#0A66C2]" />
                 </Link>
               </li>
               <li className="mb-0 lg:mb-3 xl:mb-3 inline-block md:inline lg:block xl:block mr-3 lg:mr-0 xl:mr-0">
-                <Link prefetch={false}
+                <Link
                   href="/"
                   className="tooltip"
                   data-tip="Share on Pinterest"
@@ -38,12 +38,12 @@ const ShareButtons = () => {
                 </Link>
               </li>
               <li className="mb-0 lg:mb-3 xl:mb-3 inline-block md:inline lg:block xl:block mr-3 lg:mr-0 xl:mr-0">
-                <Link prefetch={false} href="/" className="tooltip" data-tip="Share on X">
+                <Link href="/" className="tooltip" data-tip="Share on X">
                   <RiTwitterXLine className="h-6 w-6 text-slate-600 hover:text-[#000000]" />
                 </Link>
               </li>
               <li className="inline-block md:inline lg:block xl:block">
-                <Link prefetch={false} href="/" className="tooltip" data-tip="Share on WhatsApp">
+                <Link href="/" className="tooltip" data-tip="Share on WhatsApp">
                   <FaWhatsapp className="h-6 w-6 text-slate-600 hover:text-[#25D366]" />
                 </Link>
               </li>
