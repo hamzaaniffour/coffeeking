@@ -2,7 +2,7 @@ import { sendEmail } from "@/libs/mail.utils";
 
 export async function POST(request: Request) {
   const sender = {
-    name: "Cyclewaycoffee",
+    name: "CyclewayCoffee",
     address: "aniffour.dev@gmail.com",
   };
 

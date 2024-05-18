@@ -30,21 +30,21 @@ const NewsletterSuccess = () => {
             You can expect a newsletter every week or so, usually about a new
             article or video from our YouTube channel about WordPress, SEO,
             affiliate marketing, or general tips for starting a blog/website.
-            I've been focused on YouTube, so subscribe to our YouTube channel if
+            I&#39;ve been focused on YouTube, so subscribe to our YouTube channel if
             you want updates on my videos.
           </p>
           <p className="text-md font-normal mb-5 text-slate-900">
             You can expect a newsletter every week or so, usually about a new
             article or video from our YouTube channel about WordPress, SEO,
             affiliate marketing, or general tips for starting a blog/website.
-            I've been focused on YouTube, so subscribe to our YouTube channel if
+            I&#39;ve been focused on YouTube, so subscribe to our YouTube channel if
             you want updates on my videos.
           </p>
           <p className="text-lg font-semibold mb-5 text-slate-900">
             Give me your feedback!
           </p>
           <p className="text-md font-normal mb-5 text-slate-900">
-            Every now and then, I'll send you a questionnaire asking you what I
+            Every now and then, I&#39;ll send you a questionnaire asking you what I
             should write about or create a video about. Your comments outline
             what I will cover in the future and are highly appreciated.
           </p>
