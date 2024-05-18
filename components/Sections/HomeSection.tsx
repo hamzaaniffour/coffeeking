@@ -7,6 +7,7 @@ import Marquees from "@/components/Sections/Marquees";
 import Hero from "./Hero";
 import ReviewBlogs from "@/components/Blogs/ReviewBlogs";
 import GuidePosts from "@/components/Blogs/GuidePosts";
+import WhyUS from "@/components/Sections/WhyUS";
 
 const HomeSection = () => {
   return (
@@ -21,6 +22,7 @@ const HomeSection = () => {
             <HomeBlogs />
             <ReviewBlogs />
             <GuidePosts />
+            <WhyUS />
           </div>
           <div className="border-0 lg:border-r-[1px] lg:border-gray-100 xl:border-r-[2px] xl:border-gray-100"></div>
           <div className="lg:w-3/12 hidden md:hidden lg:block xl:block">
