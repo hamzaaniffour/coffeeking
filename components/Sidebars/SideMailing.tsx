@@ -1,10 +1,43 @@
-import React from "react";
+"use client";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
 const SideMailing = () => {
+  const [result, setResult] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+
+  const router = useRouter();
+
+  const sendEmail = () => {
+    setLoading(true);
+
+    fetch("/api/emails", {
+      method: "POST",
+      body: JSON.stringify({ email }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          router.push("/thank-u-for-subscribing");
+        }
+        return response.json();
+      })
+      .then((data) => setResult(data))
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
   return (
     <div>
       <div
-        className="relative w-full h-64 bg-[#2c3644] mb-6 p-5 rounded-xl"
+        className="relative w-full h-auto bg-[#2c3644] mb-6 p-5 rounded-xl"
         style={{
           backgroundImage:
             "url(https://nakib4tech.com/wp-content/uploads/2023/05/mail-icon-trans.png)",
@@ -22,9 +55,14 @@ const SideMailing = () => {
             type="text"
             className="grow text-[#808c9c]"
             placeholder="Email Address"
+            value={email}
+            onChange={handleInputChange}
           />
         </label>
-        <button className="bg-amber-400 text-slate-800 rounded-md w-full py-2.5 font-bold">
+        <button
+          onClick={sendEmail}
+          className="bg-amber-400 text-slate-800 rounded-md w-full py-2.5 font-bold"
+        >
           Get updates
         </button>
       </div>
