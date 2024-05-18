@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ["/admin"]
             }
         ],
-        sitemap: `${process.env.NEXT_PUBLIC_BASE_URLS}/sitemap.xml`,
+        sitemap: `https://www.cyclewaycoffee.net/sitemap.xml`,
     }
 }

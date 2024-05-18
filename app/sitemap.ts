@@ -13,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const posts = await response.json();
 
     const postsSitemap = posts.map((post: any) => ({
-      url: `http://localhost:3000/blog/${post.slug}`,
+      url: `https://www.cyclewaycoffee.net/blog/${post.slug}`,
       lastModified: new Date(post.modified),
     }));
 
