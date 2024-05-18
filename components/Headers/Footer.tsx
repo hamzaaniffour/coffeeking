@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { footerlinks } from "@/libs/footer-menu";
+import { quicklinks, legalpages } from "@/libs/footer-menu";
 import Link from "next/link";
 import {
   FaAngleRight,
@@ -9,6 +9,7 @@ import {
   FaPinterest,
   FaTwitter,
 } from "react-icons/fa";
+import Newsletter from "./Newsletter";
 
 interface SettingsData {
   allSettings: {
@@ -53,11 +54,10 @@ const Footer = () => {
                 Who are we?
               </h4>
               <p className="max-w-[320px] text-left text-[15px] text-black font-medium mb-2">
-                Cyclewaycoffee.net participates in affiliate programs. This
-                means we may earn a small commission if you purchase a product
-                after clicking a link on our site. You won&lsquo;t pay any extra
-                and it helps keep the coffee flowing!
+                Expert reviews, buying guides, and brewing tips for coffee
+                machines, backed by over 10 years of industry experience.
               </p>
+              <Newsletter />
               <ul className="flex justify-start items-center gap-1.5 mt-4">
                 <li>
                   <Link href="/" aria-label="Follow us on Facebook">
@@ -86,7 +86,7 @@ const Footer = () => {
                 Quick Links
               </h4>
               <ul className="">
-                {footerlinks.map((footerlink, index) => (
+                {quicklinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
                     <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-amber-600" />
                     <Link
@@ -101,17 +101,17 @@ const Footer = () => {
             </div>
             <div className="mt-10 lg:mt-0 xl:mt-0">
               <h4 className="mb-4 text-[22px] text-[#000000] font-bold uppercase">
-                Categories
+                Legal Pages
               </h4>
               <ul className="">
-                {footerlinks.map((footerlink, index) => (
+                {legalpages.map((legalpage, index) => (
                   <li className="mb-[5px]" key={index}>
                     <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-amber-600" />
                     <Link
-                      href={footerlink.slug}
+                      href={legalpage.slug}
                       className="text-md text-black transition-all font-semibold"
                     >
-                      {footerlink.title}
+                      {legalpage.title}
                     </Link>
                   </li>
                 ))}
@@ -122,7 +122,7 @@ const Footer = () => {
                 Informations
               </h4>
               <ul className="">
-                {footerlinks.map((footerlink, index) => (
+                {quicklinks.map((footerlink, index) => (
                   <li className="mb-[5px]" key={index}>
                     <FaAngleRight className="h-4 w-4 inline-block mr-1 -mt-0.5 text-amber-600" />
                     <Link

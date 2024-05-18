@@ -10,7 +10,7 @@ import {
 
 const ShareButtons = () => {
   return (
-    <div>
+    <div className="sticky top-[80px] mb-14">
       <div className="lg:w-1/12 order-first lg:order-last xl:order-last">
         <div className="text-[#e40046] text-xs tracking-wide uppercase font-semibold mb-2 lg:hidden xl:hidden ml-3">
           Share this on:

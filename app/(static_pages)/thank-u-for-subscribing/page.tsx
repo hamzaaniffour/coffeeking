@@ -23,45 +23,40 @@ const NewsletterSuccess = () => {
           <h1 className="text-3xl font-bold text-black mb-6">
             Thank You For Subscribing!
           </h1>
-          <p className="text-lg font-semibold mb-5 text-slate-900">
-            What to expect?
+          <p className="text-md font-normal mb-5 text-slate-900">
+            We&#39;re thrilled to have you join the Cyclewaycoffee community!
+            Your subscription means the world to us, and we can&#39;t wait to
+            share our latest tips, reviews, and insights on coffee machines
+            directly with you.
           </p>
           <p className="text-md font-normal mb-5 text-slate-900">
-            You can expect a newsletter every week or so, usually about a new
-            article or video from our YouTube channel about WordPress, SEO,
-            affiliate marketing, or general tips for starting a blog/website.
-            I&#39;ve been focused on YouTube, so subscribe to our YouTube channel if
-            you want updates on my videos.
+            By subscribing, you&#39;ve taken the first step toward making
+            informed decisions about your coffee machine purchases. Expect to
+            receive:
           </p>
+          <ul className="mt-7 mb-7">
+            <li className="text-md font-normal mb-2 text-slate-900">
+              <span className="font-semibold">Expert Buying Guides: </span>Detailed information to help you choose the
+              perfect coffee machine for your needs.
+            </li>
+            <li className="text-md font-normal mb-2 text-slate-900">
+              <span className="font-semibold">In-Depth Reviews: </span>Honest and comprehensive reviews of the latest
+              coffee machines on the market.
+            </li>
+            <li className="text-md font-normal mb-2 text-slate-900">
+              <span className="font-semibold">Brewing Tips & Tricks: </span>Insider tips to help you brew the perfect
+              cup of coffee every time.
+            </li>
+          </ul>
           <p className="text-md font-normal mb-5 text-slate-900">
-            You can expect a newsletter every week or so, usually about a new
-            article or video from our YouTube channel about WordPress, SEO,
-            affiliate marketing, or general tips for starting a blog/website.
-            I&#39;ve been focused on YouTube, so subscribe to our YouTube channel if
-            you want updates on my videos.
+            Stay tuned for our next newsletter packed with valuable content just
+            for you. If you have any questions or suggestions, feel free to
+            reach out to us from the <Link href="/page/contact-us" className="text-amber-500 font-semibold">Contact Us.</Link>
+            .
           </p>
-          <p className="text-lg font-semibold mb-5 text-slate-900">
-            Give me your feedback!
-          </p>
-          <p className="text-md font-normal mb-5 text-slate-900">
-            Every now and then, I&#39;ll send you a questionnaire asking you what I
-            should write about or create a video about. Your comments outline
-            what I will cover in the future and are highly appreciated.
-          </p>
-          <p className="text-md font-normal mb-5 text-slate-900">
-            If you have questions about a particular blog post, I would
-            appreciate it if you comment on the actual article so everyone can
-            learn.
-          </p>
-          <p className="text-md font-normal mb-5 text-slate-900">
-            If you have any questions, you can contact us from the{" "}
-            <Link
-              href="/page/contact-us"
-              className="text-amber-500 font-semibold"
-            >
-              Contact Us.
-            </Link>
-          </p>
+          <p className="text-md font-normal mb-3 text-slate-900">Thank you again for subscribing, and welcome to the Cyclewaycoffee family!</p>
+          <p className="text-md font-normal mb-5 text-slate-900">Warm regards,</p>
+          <p className="text-md font-semibold mb-5 text-slate-900">The Cyclewaycoffee Team</p>
         </div>
         <div className="border-0 lg:border-r-[1px] lg:border-gray-100 xl:border-r-[2px] xl:border-gray-100"></div>
         <div className="lg:w-3/12 hidden md:hidden lg:block xl:block">
