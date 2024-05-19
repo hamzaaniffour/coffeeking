@@ -10,7 +10,8 @@ const getSinglePost = async (postSlug: string) => {
       headers: {
         "Content-Type": "application/json",
       },
-      next: { revalidate: 120 },
+      // This ensures the data is always fresh
+      cache: 'no-store',
     }
   );
   const data = await response.json();
@@ -21,11 +22,16 @@ function stripHtml(html: string) {
   return html.replace(/<[^>]*>?/gm, "");
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export async function generateStaticParams() {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/pages`);
+  const pages = await response.json();
+
+  return pages.map((page: any) => ({
+    slug: page.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
   const posts = await getSinglePost(params.slug);
   if (posts.length === 0) {
     throw new Error("No post found for the given slug.");
@@ -75,3 +81,5 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
 };
 
 export default SinglePage;
+
+export const revalidate = 120; // Revalidate this page every 120 seconds

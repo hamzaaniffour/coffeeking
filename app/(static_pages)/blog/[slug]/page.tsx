@@ -22,11 +22,16 @@ function stripHtml(html: string) {
   return html.replace(/<[^>]*>?/gm, "");
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export async function generateStaticParams() {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/posts`);
+  const posts = await response.json();
+
+  return posts.map((post: any) => ({
+    slug: post.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
   const posts = await getSinglePost(params.slug);
   if (posts.length === 0) {
     throw new Error("No post found for the given slug.");
@@ -98,3 +103,5 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
 };
 
 export default SinglePost;
+
+export const revalidate = 120;

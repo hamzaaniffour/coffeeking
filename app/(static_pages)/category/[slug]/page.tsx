@@ -1,4 +1,4 @@
-import React, { cache } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,6 +19,15 @@ const getSinglePost = async (postSlug: string) => {
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>?/gm, "");
+}
+
+export async function generateStaticParams() {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/categories`);
+  const categories = await response.json();
+
+  return categories.map((category: any) => ({
+    slug: category.slug,
+  }));
 }
 
 export async function generateMetadata({
@@ -99,3 +108,5 @@ const Category = async ({ params }: { params: { slug: string } }) => {
 };
 
 export default Category;
+
+export const revalidate = 120; // Revalidate this page every 120 seconds
