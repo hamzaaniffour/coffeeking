@@ -79,17 +79,14 @@ export default async function AllBlogPosts() {
                   <Image
                     src={post.node.featuredImage.node.sourceUrl}
                     alt={post.node.title}
-                    width={400}
-                    height={300}
-                    className="rounded-lg"
                     layout="responsive"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    quality={100}
-                    priority
+                    width={700}
+                    height={475}
                     placeholder="blur"
                     blurDataURL={
                       post.node.featuredImage.node.blurDataURL || undefined
                     }
+                    className="rounded-lg"
                   />
                 </Link>
               )}

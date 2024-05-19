@@ -79,17 +79,10 @@ const Category = async ({ params }: { params: { slug: string } }) => {
                 <Image
                   src={post._embedded["wp:featuredmedia"][0].source_url}
                   alt={post.title.rendered}
-                  width={400}
-                  height={300}
+                  width={700}
+                  height={475}
                   className="rounded-lg"
                   layout="responsive"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  quality={100}
-                  priority
-                  // placeholder="blur"
-                  // blurDataURL={
-                  //   post.node.featuredImage.node.blurDataURL || undefined
-                  // }
                 />
               </Link>
             )}

@@ -44,18 +44,15 @@ const HomeProducts = async () => {
                 <span className="mask mask-hexagon z-20 flex justify-center items-center absolute -top-3 -left-3 bg-red-600 text-white text-base h-14 w-14 font-bold">
                   {blog.discount}
                 </span>
-                <div className="relative w-full h-52 overflow-hidden -mb-1.5">
-                  <Image
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
-                    src={blog.image}
-                    alt={blog.title}
-                    className="z-10"
-                    placeholder="blur"
-                    blurDataURL={base64}
-                  />
-                </div>
+                <Image
+                  src={blog.image}
+                  alt={blog.title}
+                  layout="responsive"
+                  width={700}
+                  height={475}
+                  placeholder="blur"
+                  blurDataURL="base64"
+                />
               </div>
               <div className="flex justify-center items-center">
                 <Ratings />
