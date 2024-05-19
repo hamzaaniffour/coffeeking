@@ -70,6 +70,7 @@ export default async function AllBlogPosts() {
                     layout="responsive"
                     width={700}
                     height={475}
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     placeholder="blur"
                     blurDataURL={
                       post.node.featuredImage.node.blurDataURL || undefined

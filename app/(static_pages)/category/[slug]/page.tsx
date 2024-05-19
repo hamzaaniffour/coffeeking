@@ -83,18 +83,13 @@ const Category = async ({ params }: { params: { slug: string } }) => {
                   height={475}
                   className="rounded-lg"
                   layout="responsive"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </Link>
             )}
             <h3 className="text-lg lg:text-xl xl:text-xl text-black font-semibold mt-2 leading-6">
               <Link href={`/blog/${post.slug}`}>{post.title.rendered}</Link>
             </h3>
-
-            {/* <div className="flex justify-center items-center mb-8">
-              <p className="single-content text-slate-800 max-w-[700px] font-medium text-lg text-center">
-                {post.excerpt.rendered}
-              </p>
-            </div> */}
           </div>
         ))}
       </div>

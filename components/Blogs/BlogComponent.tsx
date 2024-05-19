@@ -95,6 +95,7 @@ const BlogsPage = () => {
                         layout="responsive"
                         width={700}
                         height={475}
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         placeholder="blur"
                         blurDataURL={`${post.featuredImage.node.sourceUrl}`}
                         className="rounded-lg"
