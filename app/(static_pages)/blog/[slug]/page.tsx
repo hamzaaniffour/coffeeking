@@ -11,6 +11,7 @@ const getSinglePost = async (postSlug: string) => {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 120 },
     }
   );
   const data = await response.json();

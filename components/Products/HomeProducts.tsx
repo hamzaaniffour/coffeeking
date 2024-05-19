@@ -9,7 +9,8 @@ async function getBlogs() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/products?_embed`,
     {
-      cache: "no-store",
+      method: "GET",
+      next: { revalidate: 120 },
     }
   );
   if (!res.ok) {

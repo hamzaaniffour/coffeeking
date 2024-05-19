@@ -21,7 +21,7 @@ export default async function AllBlogPosts() {
     body: JSON.stringify({
       query: GET_GUIDE_POSTS,
     }),
-    next: { revalidate: 10 },
+    next: { revalidate: 120 },
   }).then((res) => res.json());
 
   let blogPosts = data?.posts?.edges;

@@ -10,7 +10,7 @@ const getSinglePost = async (postSlug: string) => {
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "no-store",
+      next: { revalidate: 120 },
     }
   );
   const data = await response.json();

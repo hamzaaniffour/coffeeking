@@ -20,7 +20,7 @@ export default async function AllBlogPosts() {
     body: JSON.stringify({
       query: GET_RANDOM_POSTS,
     }),
-    next: { revalidate: 10 },
+    next: { revalidate: 120 },
   }).then((res) => res.json());
 
   let blogPosts = data?.posts?.edges;

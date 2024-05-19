@@ -45,6 +45,7 @@ const getPostsFromCategory = async (categoryId: number) => {
       headers: {
         "Content-Type": "application/json",
       },
+      next: { revalidate: 120 },
     }
   );
   const data = await response.json();

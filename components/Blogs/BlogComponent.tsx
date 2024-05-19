@@ -31,11 +31,11 @@ const BlogsPage = () => {
   }, []);
 
   async function fetchData() {
-    const isNewPage = !after; // Check if it's a new page (no 'after' cursor)
+    const isNewPage = !after;
     const result = await blogPage(3, after);
 
     if (isNewPage) {
-      setPosts([]); // Clear existing posts for new page
+      setPosts([]);
     }
 
     const newPosts = result.nodes.filter(
