@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="FR-fr" data-theme="light">
+    <html lang="EN-en" data-theme="light">
       <body className={`${inter.className}`}>
         <Navbar />
         <div className="max-w-[1250px] mx-auto mb-16 mt-16 px-5 lg:px-0 xl:px-0">

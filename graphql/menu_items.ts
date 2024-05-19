@@ -27,19 +27,19 @@ export async function HeaderMenu() {
   });
 
   if (!response.ok) {
-    console.error('Network response was not ok');
+    console.error("Network response was not ok");
     return [];
   }
 
   const data = await response.json();
 
   if (data.errors) {
-    console.error('GraphQL errors:', data.errors);
+    console.error("GraphQL errors:", data.errors);
     return [];
   }
 
   if (!data.data || !data.data.menuItems) {
-    console.error('No menu items found');
+    console.error("No menu items found");
     return [];
   }
 
@@ -75,23 +75,23 @@ export async function FooterMenu() {
   });
 
   if (!response.ok) {
-    console.error('Network response was not ok');
+    console.error("Network response was not ok");
     return [];
   }
 
   const data = await response.json();
 
   if (data.errors) {
-    console.error('GraphQL errors:', data.errors);
+    console.error("GraphQL errors:", data.errors);
     return [];
   }
 
   if (!data.data || !data.data.menuItems) {
-    console.error('No menu items found');
+    console.error("No menu items found");
     return [];
   }
 
-  console.log('Received data:', data);
+  console.log("Received data:", data);
 
   return data.data.menuItems.nodes;
 }

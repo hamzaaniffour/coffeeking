@@ -41,9 +41,12 @@ const Newsletter = () => {
           className="input bg-slate-100 border-none join-item hover:outline-none focus:outline-none ring:outline-none"
           placeholder="Email"
           value={email}
-            onChange={handleInputChange}
+          onChange={handleInputChange}
         />
-        <button className="btn join-item border-none bg-amber-400 rounded-r-md font-bold" onClick={sendEmail}>
+        <button
+          className="btn join-item border-none bg-amber-400 rounded-r-md font-bold"
+          onClick={sendEmail}
+        >
           Subscribe
         </button>
       </div>

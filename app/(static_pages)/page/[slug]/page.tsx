@@ -46,7 +46,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
         <div className="lg:w-9/12">
           {data.map((page: any) => (
             <div key={page.slug}>
-              <h1 className="text-5xl md:text-6xl lg:text-5xl font-bold xl:text-5xl mb-4 text-black decoration-amber-500 underline">
+              <h1 className="text-4xl md:text-5xl lg:text-4xl font-bold xl:text-4xl uppercase mb-4 text-black">
                 {page.title.rendered}
               </h1>
               <div className="text-sm breadcrumbs mb-8">
