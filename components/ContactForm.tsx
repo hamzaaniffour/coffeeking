@@ -24,7 +24,7 @@ const ContactForm = () => {
               <div className="single-content text-slate-800 text-md font-medium mb-6">
                 We love to hear from our readers and fellow coffee enthusiasts!
                 Whether you have a question, feedback, or simply want to share
-                your love for coffee, we're here to listen. Please use the
+                your love for coffee, we&#39;re here to listen. Please use the
                 contact form below to get in touch with us.
               </div>
 
