@@ -50,7 +50,7 @@ export default async function AllBlogPosts() {
       </h2>
       <p className="text-base text-black font-medium mb-6">
         Looking to upgrade your coffee setup? Dive into our detailed reviews of
-        commercial coffee machines, covering everything from high-performance
+        Commercial Coffee Machine, covering everything from high-performance
         espresso machines to reliable drip coffee makers and convenient pod
         machines.
       </p>

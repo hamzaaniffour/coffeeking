@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s | Cyclewaycoffee",
 
   },
-  description: "Unlock the Secret to Perfect Coffee Every Time! Find Your Ideal Commercial Coffee Machines Today. Expert Reviews & Top Picks. Compare Prices & Features.",
+  description: "Unlock the Secret to Perfect Coffee Every Time! Find Your Ideal Commercial Coffee Machine Today. Expert Reviews & Top Picks. Compare Prices & Features.",
   twitter: {
     card: "summary_large_image",
   },

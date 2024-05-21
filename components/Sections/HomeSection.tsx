@@ -20,8 +20,8 @@ const HomeSection = () => {
             <Marquees />
             <GuideSection />
             <HomeBlogs />
-            <ReviewBlogs />
             <GuidePosts />
+            <ReviewBlogs />
             <WhyUS />
           </div>
           <div className="border-0 lg:border-r-[1px] lg:border-gray-100 xl:border-r-[2px] xl:border-gray-100"></div>

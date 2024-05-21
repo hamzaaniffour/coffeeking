@@ -50,7 +50,7 @@ const Newsletter = () => {
           Subscribe
         </button>
       </div>
-      <p className="text-sm text-slate-600 mt-2 max-w-[280px]">
+      <p className="text-sm text-slate-300 mt-2 max-w-[280px]">
         We will not send you spam. Unsubscribe at any time.
       </p>
     </div>

@@ -19,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return [
       {
-        url: process.env.NEXT_PUBLIC_BASE_URLS,
+        url: process.env.SITE_URL,
         lastModified: new Date(),
       },
       ...postsSitemap,

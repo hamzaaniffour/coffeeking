@@ -8,11 +8,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Perfect Commercial Coffee Machines - Top Picks & Reviews!",
+    default: "Your Perfect Commercial Coffee Machine - Top Picks & Reviews!",
     template: "%s | Cyclewaycoffee",
 
   },
-  description: "Unlock the Secret to Perfect Coffee Every Time! Find Your Ideal Commercial Coffee Machines Today. Expert Reviews & Top Picks. Compare Prices & Features.",
+  description: "Unlock the Secret to Perfect Coffee Every Time! Find Your Ideal Commercial Coffee Machine Today. Expert Reviews & Top Picks. Compare Prices & Features.",
   twitter: {
     card: "summary_large_image",
   },

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import robots from "@/app/robots";
 
 const getSinglePost = async (postSlug: string) => {
   const response = await fetch(
@@ -43,6 +44,7 @@ export async function generateMetadata({
   return {
     title: post.name,
     description: stripHtml(post.description),
+    robots: "follow, index",
   };
 }
 
@@ -75,7 +77,7 @@ const Category = async ({ params }: { params: { slug: string } }) => {
             {category.name}
           </h1>
           <div className="flex justify-center items-center mb-14">
-            <p className="single-content text-slate-800 max-w-[700px] font-medium text-xl text-center">
+            <p className="single-content text-slate-800 max-w-[750px] font-medium text-xl text-center">
               {category.description}
             </p>
           </div>

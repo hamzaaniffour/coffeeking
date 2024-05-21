@@ -26,7 +26,7 @@ export const links = [
     },
     {
       id: 6,
-      title: "Contact us",
+      title: "Contact",
       slug: "",
     },
     {

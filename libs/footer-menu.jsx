@@ -1,21 +1,16 @@
 export const quicklinks = [
     {
       id: 1,
-      title: "Home",
-      slug: "/",
-    },
-    {
-      id: 2,
       title: "Reviews",
       slug: "/category/reviews",
     },
     {
-      id: 3,
+      id: 2,
       title: "Guides",
       slug: "/category/guides",
     },
     {
-      id: 4,
+      id: 3,
       title: "Recipes",
       slug: "/category/recipes",
     },
@@ -53,15 +48,10 @@ export const quicklinks = [
     {
       id: 4,
       title: "Terms & Conditions",
-      slug: "/page/terms-Conditions",
-    },
-     {
-      id: 5,
-      title: "Compensation Disclosure",
-      slug: "/page/compensation-disclosure",
+      slug: "/page/terms-conditions",
     },
     {
-      id: 6,
+      id: 5,
       title: "Contact Us",
       slug: "/page/contact-us",
     },

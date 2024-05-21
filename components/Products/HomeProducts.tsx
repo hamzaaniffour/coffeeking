@@ -35,7 +35,7 @@ const HomeProducts = async () => {
   return (
     <div>
       <h2 className="text-3xl text-black font-bold mb-8">
-        Best Coffee Machines in 2024
+        Best Commercial Coffee Machines in 2024
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-10">
         {data.map((blog: any) => (
@@ -59,7 +59,7 @@ const HomeProducts = async () => {
                 <Ratings />
               </div>
               <h3 className="text-[13px] text-center lg:text-[13px] xl:text-[13px] text-black font-semibold mb-2 mt-1">
-                {limitWords(blog.title, 6)}
+                {limitWords(blog.title, 10)}
               </h3>
               <button className="calltoaction font-bold py-[5px] px-2 bg-[#ffe000] hover:bg-[#ffe000] w-full transition-all text-black rounded text-[13px] md:text-md lg:text-md xl:text-md">
                 See Amazon Pricing
