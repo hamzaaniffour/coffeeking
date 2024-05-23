@@ -6,8 +6,8 @@ import { unified } from "unified";
 import rehypeParse from "rehype-parse";
 import rehypeStringify from "rehype-stringify";
 import { visit } from "unist-util-visit";
-import type { Element } from 'hast';
-import type { Root, Text } from 'hast';
+import type { Element } from "hast";
+import type { Root, Text } from "hast";
 import parameterize from "parameterize";
 
 const getSinglePost = async (postSlug: string) => {
@@ -30,7 +30,9 @@ function stripHtml(html: string) {
 }
 
 export async function generateStaticParams() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/posts`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/posts`
+  );
   const posts = await response.json();
 
   return posts.map((post: any) => ({
@@ -38,7 +40,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const posts = await getSinglePost(params.slug);
   if (posts.length === 0) {
     throw new Error("No post found for the given slug.");
@@ -52,7 +58,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       headers: {
         "Content-Type": "application/json",
       },
-      cache: 'no-store',
+      cache: "no-store",
     }
   );
   const tagsData = await tagsResponse.json();
@@ -68,30 +74,34 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 const SinglePost = async ({ params }: { params: { slug: string } }) => {
   const data = await getSinglePost(params.slug);
-  
-  const toc: { id: string; title: string; }[] = [];
+
+  const toc: { id: string; title: string }[] = [];
 
   const content = unified()
-  .use(rehypeParse, {
-    fragment: true,
-  })
-  .use(() => {
-    return (tree: Root) => {
-      visit(tree, 'element', (node: Element) => {
-        if (node.tagName === 'h2' && node.children[0] && 'value' in node.children[0]) {
-          const childNode = node.children[0];
-          if ((childNode as Text).value) {
-            const id = parameterize((childNode as Text).value);
-            node.properties.id = id;
-            toc.push({ id, title: (childNode as Text).value });
+    .use(rehypeParse, {
+      fragment: true,
+    })
+    .use(() => {
+      return (tree: Root) => {
+        visit(tree, "element", (node: Element) => {
+          if (
+            node.tagName === "h2" &&
+            node.children[0] &&
+            "value" in node.children[0]
+          ) {
+            const childNode = node.children[0];
+            if ((childNode as Text).value) {
+              const id = parameterize((childNode as Text).value);
+              node.properties.id = id;
+              toc.push({ id, title: (childNode as Text).value });
+            }
           }
-        }
-      });
-    };
-  })
-  .use(rehypeStringify)
-  .processSync(data[0].content.rendered)
-  .toString();
+        });
+      };
+    })
+    .use(rehypeStringify)
+    .processSync(data[0].content.rendered)
+    .toString();
 
   return (
     <div className="">
@@ -118,17 +128,18 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
                   {post.title.rendered}
                 </h1>
 
-
                 <ul className="border-b-2 border-slate-200 pb-3">
-                  <li className="text-black font-semibold mb-3 text-2xl">What's Inside?🧐</li>
+                  <li className="text-black font-semibold mb-3 text-2xl">
+                    What&#39;s Inside?🧐
+                  </li>
                   {toc.map(({ id, title }) => (
                     <li key={id} className="mb-1">
-                      <Link href={`#${id}`} className="font-medium">{title}</Link>
+                      <Link href={`#${id}`} className="font-medium">
+                        {title}
+                      </Link>
                     </li>
                   ))}
                 </ul>
-
-
 
                 <div
                   className="single-content text-slate-800 font-light text-lg"
