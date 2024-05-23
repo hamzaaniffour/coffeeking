@@ -94,7 +94,7 @@ const Navbar = () => {
                               <ul
                                 className={`${
                                   openMenuIndex === index ? "block" : "hidden"
-                                } mt-3 mb-3 pl-5`}
+                                } mt-3 mb-3 pl-5 pr-5`}
                               >
                                 {link.childItems.nodes.map(
                                   (subLink, subIndex) => (

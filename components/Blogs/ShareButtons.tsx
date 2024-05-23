@@ -19,7 +19,7 @@ const ShareButtons = () => {
           <div className="bg-slate-100 flex justify-center items-center flex-row lg:flex-col xl:flex-col py-2 lg:py-6 xl:py-6 px-4 rounded-full mb-5">
             <ul className="">
               <li className="mb-0 lg:mb-3 xl:mb-3 inline-block md:inline lg:block xl:block mr-3 lg:mr-0 xl:mr-0">
-                <Link href="/" className="tooltip" data-tip="Share on facebook">
+                <Link href="/" target="_blank" className="tooltip" data-tip="Share on facebook">
                   <FaFacebookF className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
                 </Link>
               </li>
