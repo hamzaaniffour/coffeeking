@@ -28,7 +28,18 @@ function limitWords(text: string, limit: number): string {
 }
 
 const HomeProducts = async () => {
-  const data = await getBlogs();
+  let data;
+  try {
+    data = await getBlogs();
+  } catch (error) {
+    console.error(error);
+    return <div>There are no products available.</div>;
+  }
+
+  if (!data || data.length === 0) {
+    return <div>There are no products available.</div>;
+  }
+
   const imageUrl = data[0].image;
   const { base64 } = await getBlurData(imageUrl);
 
@@ -52,7 +63,7 @@ const HomeProducts = async () => {
                   width={700}
                   height={475}
                   placeholder="blur"
-                  blurDataURL="base64"
+                  blurDataURL={base64}
                 />
               </div>
               <div className="flex justify-center items-center">
@@ -69,7 +80,7 @@ const HomeProducts = async () => {
         ))}
       </div>
       <div className="max-w-[400px] mx-auto flex justify-center items-center mt-8">
-        <Link href="https://www.amazon.com/" target="_blank">
+        <Link href="https://amzn.to/3wKoHdk" target="_blank">
           <button className="py-2 px-6 rounded-full font-bold w-full bg-black text-white">
             See more products on Amazon{" "}
             <GoArrowUpRight className="inline-block h-4 w-4 -mt-0.5" />
