@@ -74,7 +74,7 @@ const HomeProducts = async () => {
               <h3 className="text-[13px] text-center lg:text-[14px] xl:text-[14px] text-black font-semibold mb-2 mt-2">
                 {limitWords(product.title, 6)}
               </h3>
-              <button className="calltoaction font-bold py-[5px] px-2 bg-[#ffe000] hover:bg-[#ffe000] w-full transition-all text-black rounded text-[13px] md:text-md lg:text-md xl:text-md">
+              <button className="calltoaction font-black py-[5px] px-2 bg-[#ffe000] hover:bg-[#ffe000] w-full transition-all text-black rounded text-[13px] md:text-md lg:text-md xl:text-md">
                 See Amazon Pricing
               </button>
             </div>

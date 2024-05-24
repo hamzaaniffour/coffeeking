@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Headers/Navbar";
 import Footer from "@/components/Headers/Footer";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="EN-en" data-theme="light">
+      <head><meta name="google-site-verification" content="Q-YBdHRQT9UEDz9po1QmQ0jUNMpqdpLq36AxPodrGSI" /></head>
       <body className={`${inter.className}`}>
         <Navbar />
         <div className="max-w-[1250px] mx-auto mb-16 mt-16 px-5 lg:px-0 xl:px-0">

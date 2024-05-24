@@ -128,13 +128,13 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
                   {post.title.rendered}
                 </h1>
 
-                <ul className="border-b-2 border-slate-200 pb-3">
-                  <li className="text-black font-semibold mb-3 text-2xl">
+                <ul className="border-b-2 border-slate-100 p-3 rounded-xl bg-slate-50" style={{paddingBottom: '-0.25rem'}}>
+                  <li className="text-black font-semibold mb-4 text-2xl">
                     What&#39;s Inside?🧐
                   </li>
                   {toc.map(({ id, title }) => (
                     <li key={id} className="mb-1">
-                      <Link href={`#${id}`} className="font-medium">
+                      <Link href={`#${id}`} className="font-semibold text-base text-slate-700">
                         {title}
                       </Link>
                     </li>
