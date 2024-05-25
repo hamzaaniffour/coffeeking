@@ -2,7 +2,7 @@ export const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL!;
 
 export const GET_REVIEW_POSTS = `
   query getPosts {
-    posts(first: 3, where: {categoryName: "reviews"}) {
+    posts(first: 3, where: {categoryName: "Reviews"}) {
       edges {
         node {
           title
@@ -28,7 +28,7 @@ export const GET_REVIEW_POSTS = `
 
 export const GET_GUIDE_POSTS = `
   query getPosts {
-    posts(first: 3, where: {categoryName: "reviews"}) {
+    posts(first: 3, where: {categoryName: "Guides"}) {
       edges {
         node {
           title

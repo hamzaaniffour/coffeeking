@@ -9,35 +9,40 @@ import { visit } from "unist-util-visit";
 import type { Element } from "hast";
 import type { Root, Text } from "hast";
 import parameterize from "parameterize";
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: `${process.env.NEXT_PUBLIC_GRAPHQL_URL}`,
+  cache: new InMemoryCache(),
+});
+
+const GET_SINGLE_POST = gql`
+  query SinglePostQuery($slug: String!) {
+    postBy(slug: $slug) {
+      slug
+      title
+      excerpt
+      content
+      tags {
+        nodes {
+          name
+        }
+      }
+    }
+  }
+`;
 
 const getSinglePost = async (postSlug: string) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/posts?slug=${postSlug}&_embed`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      next: { revalidate: 120 },
-    }
-  );
-  const data = await response.json();
-  return data;
+  const { data } = await client.query({
+    query: GET_SINGLE_POST,
+    variables: { slug: postSlug },
+  });
+
+  return data.postBy;
 };
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>?/gm, "");
-}
-
-export async function generateStaticParams() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/posts`
-  );
-  const posts = await response.json();
-
-  return posts.map((post: any) => ({
-    slug: post.slug,
-  }));
 }
 
 export async function generateMetadata({
@@ -45,38 +50,38 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  const posts = await getSinglePost(params.slug);
-  if (posts.length === 0) {
+  const post = await getSinglePost(params.slug);
+  if (!post) {
     throw new Error("No post found for the given slug.");
   }
-  const post = posts[0];
-  const tagIds = post.tags.map((tag: { id: number }) => tag.id).join(",");
-  const tagsResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/tags?include=${tagIds}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      cache: "no-store",
-    }
-  );
-  const tagsData = await tagsResponse.json();
-  const tagTitles = tagsData
-    .map((tag: { name: string }) => tag.name)
-    .join(", ");
+
   return {
-    title: post.title.rendered,
-    description: stripHtml(post.excerpt.rendered),
-    keywords: tagTitles,
+    title: post.title,
+    description: stripHtml(post.excerpt),
+    keywords: post.tags.nodes
+      .map((tag: { name: string }) => tag.name)
+      .join(", "),
   };
 }
 
 const SinglePost = async ({ params }: { params: { slug: string } }) => {
-  const data = await getSinglePost(params.slug);
+  const post = await getSinglePost(params.slug);
+  if (!post) {
+    return <div>No post found</div>;
+  }
 
+  const getTextContent = (node: Element | Text): string => {
+    if ('value' in node) {
+      return node.value;
+    }
+    if ('children' in node && node.children) {
+      return node.children.map((child) => getTextContent(child as Element | Text)).join("");
+    }
+    return "";
+  };
+  
   const toc: { id: string; title: string }[] = [];
-
+  
   const content = unified()
     .use(rehypeParse, {
       fragment: true,
@@ -84,24 +89,21 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
     .use(() => {
       return (tree: Root) => {
         visit(tree, "element", (node: Element) => {
-          if (
-            node.tagName === "h2" &&
-            node.children[0] &&
-            "value" in node.children[0]
-          ) {
-            const childNode = node.children[0];
-            if ((childNode as Text).value) {
-              const id = parameterize((childNode as Text).value);
+          if (node.tagName === "h2") {
+            const textContent = getTextContent(node);
+            if (textContent) {
+              const id = parameterize(textContent);
               node.properties.id = id;
-              toc.push({ id, title: (childNode as Text).value });
+              toc.push({ id, title: textContent });
             }
           }
         });
       };
     })
     .use(rehypeStringify)
-    .processSync(data[0].content.rendered)
+    .processSync(post.content)
     .toString();
+  
 
   return (
     <div className="">
@@ -111,42 +113,46 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
         </div>
         <div className="lg:w-7/12">
           <>
-            {data.map((post: any) => (
-              <div key={post.slug}>
-                <div className="text-sm breadcrumbs mb-3">
-                  <ul>
-                    <li>
-                      <Link href="/">Home</Link>
-                    </li>
-                    <li>
-                      <Link href="/blog">Blog</Link>
-                    </li>
-                    <li className="font-semibold">{post.title.rendered}</li>
-                  </ul>
-                </div>
-                <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl mb-7 !leading-20 text-black font-bold">
-                  {post.title.rendered}
-                </h1>
-
-                <ul className="border-b-2 border-slate-100 p-3 rounded-xl bg-slate-50" style={{paddingBottom: '-0.25rem'}}>
-                  <li className="text-black font-semibold mb-4 text-2xl">
-                    What&#39;s Inside?🧐
+            <div key={post.slug}>
+              <div className="text-sm breadcrumbs mb-3">
+                <ul>
+                  <li>
+                    <Link href="/">Home</Link>
                   </li>
-                  {toc.map(({ id, title }) => (
-                    <li key={id} className="mb-1">
-                      <Link href={`#${id}`} className="font-semibold text-base text-slate-700">
-                        {title}
-                      </Link>
-                    </li>
-                  ))}
+                  <li>
+                    <Link href="/blog">Blog</Link>
+                  </li>
+                  <li className="font-semibold">{post.title}</li>
                 </ul>
-
-                <div
-                  className="single-content text-slate-800 font-light text-lg"
-                  dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-                ></div>
               </div>
-            ))}
+              <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl mb-7 !leading-20 text-black font-bold">
+                {post.title}
+              </h1>
+
+              <ul
+                className="border-b-2 border-slate-100 p-3 rounded-xl bg-slate-50"
+                style={{ paddingBottom: "-0.25rem" }}
+              >
+                <li className="text-black font-semibold mb-4 text-2xl">
+                  What&#39;s Inside?🧐
+                </li>
+                {toc.map(({ id, title }) => (
+                  <li key={id} className="mb-1">
+                    <Link
+                      href={`#${id}`}
+                      className="font-semibold text-base text-slate-700"
+                    >
+                      {title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                className="single-content text-slate-800 font-light text-lg"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              ></div>
+            </div>
           </>
         </div>
         <div className="lg:w-3/12 order-last lg:order-first xl:order-first">

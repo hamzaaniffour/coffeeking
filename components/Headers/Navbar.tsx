@@ -62,8 +62,8 @@ const Navbar = () => {
           <nav className="bg-black flex justify-center items-center shadow w-full px-5 lg:px-0 xl:px-0 fixed top-0 z-50">
             <div className="navbar max-w-[1250px] mx-auto flex justify-center !p-0 !h-0">
               {sidenav && (
-                <div className="bg-black bg-opacity-90 h-full w-full fixed top-0 left-0 z-50">
-                  <div className="!w-[70%] bg-black transition-all pt-10 z-50 block shadow fixed left-0 top-0 bottom-0 h-full lg:hidden xl:hidden">
+                <div className="bg-black bg-opacity-90 h-full w-full fixed top-0 left-0 z-50 !transition-all">
+                  <div className="!w-[70%] bg-black !transition-all pt-10 z-50 block shadow fixed left-0 top-0 bottom-0 h-full lg:hidden xl:hidden">
                     <ul className="flex flex-col">
                       {headerMenu.map((link, index) => (
                         <li key={index} className="relative mb-5 pl-2">

@@ -218,6 +218,16 @@
   font-size: 20px;
   line-height: 35px;
 }
+.single-content h2 strong{
+  background: #fbbf24;
+  padding: 4px 12px 4px 11px;
+  border-radius: 2px;
+  margin-right: 2px;
+}
+
+.wp-block-image figure{
+  padding: 10px 0px 40px 0px;
+}
 
 .wp-block-button{
   display: flex;
