@@ -19,7 +19,12 @@ export const metadata: Metadata = {
   },
   robots: 'index, follow',
   openGraph: {
-    images: ['https://lift-car.com/tools/wp-content/uploads/2024/04/0_3Xdd_WEaRxryzfLC.webp'],
+    images: [''],
+    url: 'https://www.cyclewaycoffee.net',
+  },
+  authors: [{ name: 'CyclewayCoffee' }],
+  icons: {
+    shortcut: '/favicon.ico',
   },
 };
 

@@ -6,7 +6,7 @@ const nextConfig = {
             "dev-cyclewaycoffee.pantheonsite.io",
             "dev-padre.pantheonsite.io",
         ],
-    }
+    },
 };
 
 export default withPlaiceholder(nextConfig);

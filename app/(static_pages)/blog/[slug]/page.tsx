@@ -28,6 +28,11 @@ const GET_SINGLE_POST = gql`
           name
         }
       }
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
     }
   }
 `;
@@ -58,9 +63,14 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: stripHtml(post.excerpt),
-    keywords: post.tags.nodes
-      .map((tag: { name: string }) => tag.name)
-      .join(", "),
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}blog/${post.slug}`,
+    },
+    keywords: post.tags.nodes.map((tag: { name: string }) => tag.name).join(", "),
+    openGraph: {
+      images: `${post.featuredImage.node.sourceUrl}`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}${post.slug}/`,
+    },
   };
 }
 
