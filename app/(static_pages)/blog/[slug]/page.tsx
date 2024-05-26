@@ -33,6 +33,19 @@ const GET_SINGLE_POST = gql`
           sourceUrl
         }
       }
+      seo {
+        canonical
+        metaDesc
+        title
+        twitterDescription
+        twitterTitle
+        opengraphModifiedTime
+        opengraphPublishedTime
+        opengraphDescription
+        opengraphImage {
+          mediaItemUrl
+        }
+      }
     }
   }
 `;
@@ -61,15 +74,21 @@ export async function generateMetadata({
   }
 
   return {
-    title: post.title,
-    description: stripHtml(post.excerpt),
+    title: post.seo.title,
+    description: stripHtml(post.seo.metaDesc),
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_SITE_URL}blog/${post.slug}`,
     },
     keywords: post.tags.nodes.map((tag: { name: string }) => tag.name).join(", "),
     openGraph: {
-      images: `${post.featuredImage.node.sourceUrl}`,
-      url: `${process.env.NEXT_PUBLIC_SITE_URL}${post.slug}/`,
+      images: `${post.seo.opengraphImage.mediaItemUrl}`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}blog/${post.slug}/`,
+      siteName: "CyclewayCoffee",
+      type: "article",
+      title: post.title,
+      description: post.seo.twitterDescription,
+      modifiedTime: post.seo.opengraphModifiedTime,
+      publishedTime: post.seo.opengraphPublishedTime,
     },
   };
 }

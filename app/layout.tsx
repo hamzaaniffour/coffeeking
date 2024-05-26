@@ -17,12 +17,15 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
-  robots: 'index, follow',
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   openGraph: {
     images: [''],
     url: 'https://www.cyclewaycoffee.net',
   },
   authors: [{ name: 'CyclewayCoffee' }],
+  viewport: 'width=device-width, initial-scale=1.0',
+  metadataBase: new URL('https://www.cyclewaycoffee.net'),
+  themeColor: 'light',
   icons: {
     shortcut: '/favicon.ico',
   },
