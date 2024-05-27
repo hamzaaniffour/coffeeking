@@ -38,7 +38,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="EN-en" data-theme="light">
-      <head><meta name="google-site-verification" content="Q-YBdHRQT9UEDz9po1QmQ0jUNMpqdpLq36AxPodrGSI" /></head>
+      <head>
+        <meta name="google-site-verification" content="Q-YBdHRQT9UEDz9po1QmQ0jUNMpqdpLq36AxPodrGSI" />
+        <meta name='impact-site-verification' content='61dd7c1a-ecaf-471c-8207-e01518fa163a' />
+      </head>
       <body className={`${inter.className}`}>
         <Navbar />
         <div className="max-w-[1250px] mx-auto mb-16 mt-16 px-5 lg:px-0 xl:px-0">
