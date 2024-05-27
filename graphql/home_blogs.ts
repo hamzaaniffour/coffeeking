@@ -77,3 +77,23 @@ export const GET_RANDOM_POSTS = `
     }
   }
 `;
+
+export const GET_HOME_PAGE = `
+query GetPage {
+  pageBy(uri: "commercial-coffee-machine") {
+    id
+    content
+    seo {
+      title
+      metaDesc
+      opengraphSiteName
+      opengraphTitle
+      opengraphType
+      opengraphDescription
+      opengraphImage {
+        sourceUrl
+      }
+    }
+  }
+}
+`;

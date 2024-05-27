@@ -1,26 +1,31 @@
+import { GET_HOME_PAGE, GRAPHQL_URL } from "@/graphql/home_blogs";
 import React from "react";
 
-async function getHomePage() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URLS}/wp-json/wp/v2/pages?slug=commercial-coffee-machine`
-  );
-  if (!res.ok) {
-    throw new Error("Failed to fetch homepage data");
-  }
-  return res.json();
-}
-
 const GuideSection = async () => {
-  const pages = await getHomePage();
-  const page = pages.length > 0 ? pages[0] : null;
+  const { data } = await fetch(GRAPHQL_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: GET_HOME_PAGE,
+    }),
+    next: { revalidate: 10 },
+  }).then((res) => res.json());
+
+  const page = data?.pageBy; // Assuming your query returns 'pageBy'
+
+  if (!page) {
+    return null; // Handle case where no data is returned
+  }
 
   return (
     <div className="mt-16">
-      {page ? (
-        <div className="pages-content text-lg text-slate-800" dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
-      ) : (
-        <p>There is no data</p>
-      )}
+      <div
+        key={page.id}
+        className="pages-content text-lg text-slate-800"
+        dangerouslySetInnerHTML={{ __html: page.content }}
+      ></div>
     </div>
   );
 };
