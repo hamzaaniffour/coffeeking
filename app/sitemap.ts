@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const posts = data.posts.nodes;
 
     const postsSitemap = posts.map((post: any) => ({
-      url: `https://www.cyclewaycoffee.net/blog/${post.slug}`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}blog/${post.slug}`,
       lastModified: new Date(post.modified),
     }));
 
