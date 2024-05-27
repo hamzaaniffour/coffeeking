@@ -10,7 +10,6 @@ const getSinglePost = async (postSlug: string) => {
       headers: {
         "Content-Type": "application/json",
       },
-      // This ensures the data is always fresh
       cache: 'no-store',
     }
   );

@@ -94,6 +94,7 @@ export async function generateMetadata({
 }
 
 const SinglePost = async ({ params }: { params: { slug: string } }) => {
+
   const post = await getSinglePost(params.slug);
   if (!post) {
     return <div>No post found</div>;
