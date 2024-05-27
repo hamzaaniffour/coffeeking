@@ -8,14 +8,11 @@ export const metadata: Metadata = {
     template: "%s | Cyclewaycoffee",
 
   },
-  description: "Unlock the Secret to Perfect Coffee Every Time! Find Your Ideal Commercial Coffee Machine Today. Expert Reviews & Top Picks. Compare Prices & Features.",
+  description: "Unlock the secrets to perfect coffee every time! Explore top commercial coffee machines, expert reviews, and price comparisons on our blog.",
   twitter: {
     card: "summary_large_image",
   },
   robots: 'index, follow',
-  openGraph: {
-    images: ['https://lift-car.com/tools/wp-content/uploads/2024/04/0_3Xdd_WEaRxryzfLC.webp'],
-  },
 };
 
 const BlogPage = () => {
