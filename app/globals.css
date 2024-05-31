@@ -105,6 +105,15 @@
   padding-right: 2px;
 }
 
+.share-buttons li button{
+  height: 0px !important;
+  width: 0px !important;
+}
+.share-buttons li button svg{
+  height: 50px !important;
+  width: 50px !important;
+}
+
 .single-content a:hover {
   background: #fed7aa;
   padding-left: 2px;
@@ -264,7 +273,8 @@
 .schema-faq-question {
   font-weight: 700;
   color: #000000;
-  font-size: 21px;
+  font-size: 18px;
+  cursor: pointer;
 }
 .schema-faq-answer {
   margin-bottom: 0px !important;
@@ -276,6 +286,18 @@
 
 .wp-block-image figure {
   padding: 10px 0px 40px 0px;
+}
+
+.wp-block-embed__wrapper iframe{
+  width: 100% !important;
+  height: 407px !important;
+}
+.wp-element-caption{
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  color: #8f8f8f;
+  margin-top: 5px !important;
 }
 
 .wp-block-button {

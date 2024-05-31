@@ -9,6 +9,10 @@ import Logo from "@/components/Headers/Logo";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Image from "next/image";
 import cyclewaycoffee from "@/public/assets/coffee-logo.svg";
+import { GiCoffeeCup } from "react-icons/gi";
+import { FaFacebookF, FaInstagram, FaPinterestP, FaYoutube } from "react-icons/fa";
+import { BiSearch } from "react-icons/bi";
+import SearchPopup from "./SearchPopup";
 
 interface MenuItem {
   label: string;
@@ -22,6 +26,11 @@ const Navbar = () => {
   const [sidenav, setSideNav] = useState<boolean>(false);
   const [headerMenu, setHeaderMenu] = useState<MenuItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchVisible, setsearchVisible] = useState(false);
+
+  const handleSearchPopup = () => {
+    setsearchVisible(!searchVisible);
+  };
 
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
 
@@ -92,9 +101,8 @@ const Navbar = () => {
                           {link.childItems &&
                             link.childItems.nodes.length > 0 && (
                               <ul
-                                className={`${
-                                  openMenuIndex === index ? "block" : "hidden"
-                                } mt-3 mb-3 pl-5 pr-5`}
+                                className={`${openMenuIndex === index ? "block" : "hidden"
+                                  } mt-3 mb-3 pl-5 pr-5`}
                               >
                                 {link.childItems.nodes.map(
                                   (subLink, subIndex) => (
@@ -138,63 +146,91 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1 flex gap-0">
                   {loading
                     ? links.map((link, index) => (
-                        <li key={index} className="dropdown dropdown-hover">
-                          <Link
-                            href={link.slug}
-                            className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
-                          >
-                            {link.title}
-                          </Link>
-                        </li>
-                      ))
-                    : headerMenu.map((link, index) => (
-                        <li
-                          key={index}
-                          className="dropdown dropdown-hover py-5"
+                      <li key={index} className="dropdown dropdown-hover">
+                        <Link
+                          href={link.slug}
+                          className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
                         >
-                          <Link
-                            href={getURL(link.uri)}
-                            className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
-                          >
-                            {link.label}
-                          </Link>
-                          {link.childItems &&
-                            link.childItems.nodes.length > 0 && (
-                              <ul
-                                tabIndex={0}
-                                className="dropdown-content z-[9] menu p-2 px-0 shadow-xl bg-base-100 rounded-lg min-w-max mt-4"
-                              >
-                                {link.childItems.nodes.map(
-                                  (subLink, subIndex) => (
-                                    <li key={subIndex}>
-                                      <Link
-                                        href={`/blog${subLink.uri}`}
-                                        className="text-[15px] font-semibold py-[3px]"
-                                      >
-                                        {subLink.label}
-                                      </Link>
-                                    </li>
-                                  )
-                                )}
-                              </ul>
-                            )}
-                        </li>
-                      ))}
+                          {link.title}
+                        </Link>
+                      </li>
+                    ))
+                    : headerMenu.map((link, index) => (
+                      <li
+                        key={index}
+                        className="dropdown dropdown-hover py-5"
+                      >
+                        <Link
+                          href={getURL(link.uri)}
+                          className="text-base uppercase outline-none outline-offset-0 font-semibold text-white px-3"
+                        >
+                          {link.label}
+                        </Link>
+                        {link.childItems &&
+                          link.childItems.nodes.length > 0 && (
+                            <ul
+                              tabIndex={0}
+                              className="dropdown-content z-[9] menu p-2 px-0 shadow-xl bg-base-100 rounded-lg min-w-max mt-4"
+                            >
+                              {link.childItems.nodes.map(
+                                (subLink, subIndex) => (
+                                  <li key={subIndex}>
+                                    <Link
+                                      href={`/blog${subLink.uri}`}
+                                      className="text-[15px] font-semibold py-[3px]"
+                                    >
+                                      {subLink.label}
+                                    </Link>
+                                  </li>
+                                )
+                              )}
+                            </ul>
+                          )}
+                      </li>
+                    ))}
                 </ul>
               </div>
 
               <div className="navbar-end">
-                <Link
-                  href="/"
-                  className="calltoaction font-bold py-[5px] px-3 bg-amber-400 transition-all text-black rounded ml-3 text-md"
-                >
-                  Coffee eBooks
-                </Link>
+                <ul className="flex justify-center items-center gap-3">
+                  <li className="">
+                    <Link href=""><FaFacebookF className="text-white h-5 w-5 inline-block" /></Link>
+                  </li>
+                  <li className="">
+                    <Link href=""><FaInstagram className="text-white h-5 w-5 inline-block" /></Link>
+                  </li>
+                  <li className="">
+                    <Link href=""><FaPinterestP className="text-white h-5 w-5 inline-block" /></Link>
+                  </li>
+                  <li className="">
+                    <Link href=""><FaYoutube className="text-white h-5 w-5 inline-block" /></Link>
+                  </li>
+                  <li className="ml-2">
+                    <button onClick={handleSearchPopup}><BiSearch className="text-white h-5 w-5 inline-block" /></button>
+                  </li>
+                </ul>
               </div>
             </div>
           </nav>
         </header>
       </div>
+      {searchVisible && (
+        <div className="bg-black bg-opacity-95 fixed w-full h-full z-50 top-0 left-0 right-0 flex items-center justify-center flex-col px-5">
+          <form className="w-[500px] mx-auto">
+          <h3 className="text-white text-xl font-semibold text-left mb-8">Where do you want to go?</h3>
+            <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <div className="relative">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                </svg>
+              </div>
+              <input type="search" id="default-search" className="block w-full p-4 ps-10 text-sm text-amber-100 border-b-4 border-gray-300 bg-transparent !outline-none dark:placeholder-gray-400" placeholder="Search for articles..." required />
+              <button type="submit" className="text-slate-900 absolute end-0 bottom-2.5 bg-white focus:ring-4 focus:outline-none font-medium rounded text-sm px-4 py-2">Search now</button>
+            </div>
+          </form>
+        </div>
+      )}
     </>
   );
 };

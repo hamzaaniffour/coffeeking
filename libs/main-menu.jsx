@@ -26,12 +26,12 @@ export const links = [
     },
     {
       id: 6,
-      title: "Contact",
+      title: "About us",
       slug: "",
     },
     {
       id: 7,
-      title: "About us",
+      title: "Contact us",
       slug: "",
     },
   ];

@@ -1,4 +1,3 @@
-import ShareButtons from "@/components/Blogs/ShareButtons";
 import HomeSidebar from "@/components/Sidebars/HomeSidebar";
 import Link from "next/link";
 import React from "react";
@@ -10,6 +9,13 @@ import type { Element } from "hast";
 import type { Root, Text } from "hast";
 import parameterize from "parameterize";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaPinterest,
+  FaWhatsapp,
+} from "react-icons/fa6";
+import { RiTwitterXLine } from "react-icons/ri";
 
 const client = new ApolloClient({
   uri: `${process.env.NEXT_PUBLIC_GRAPHQL_URL}`,
@@ -79,7 +85,9 @@ export async function generateMetadata({
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_SITE_URL}blog/${post.slug}`,
     },
-    keywords: post.tags.nodes.map((tag: { name: string }) => tag.name).join(", "),
+    keywords: post.tags.nodes
+      .map((tag: { name: string }) => tag.name)
+      .join(", "),
     openGraph: {
       images: `${post.seo.opengraphImage.mediaItemUrl}`,
       url: `${process.env.NEXT_PUBLIC_SITE_URL}blog/${post.slug}/`,
@@ -94,24 +102,25 @@ export async function generateMetadata({
 }
 
 const SinglePost = async ({ params }: { params: { slug: string } }) => {
-
   const post = await getSinglePost(params.slug);
   if (!post) {
     return <div>No post found</div>;
   }
 
   const getTextContent = (node: Element | Text): string => {
-    if ('value' in node) {
+    if ("value" in node) {
       return node.value;
     }
-    if ('children' in node && node.children) {
-      return node.children.map((child) => getTextContent(child as Element | Text)).join("");
+    if ("children" in node && node.children) {
+      return node.children
+        .map((child) => getTextContent(child as Element | Text))
+        .join("");
     }
     return "";
   };
-  
+
   const toc: { id: string; title: string }[] = [];
-  
+
   const content = unified()
     .use(rehypeParse, {
       fragment: true,
@@ -133,17 +142,78 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
     .use(rehypeStringify)
     .processSync(post.content)
     .toString();
-  
 
   return (
     <div className="">
       <div className="lg:flex gap-14">
         <div className="lg:w-1/12 order-first lg:order-last xl:order-last">
-          <ShareButtons />
+          <div className="sticky top-[80px] mb-14">
+            <div className="lg:w-1/12 order-first lg:order-last xl:order-last">
+              <div className="text-[#e40046] text-xs tracking-wide uppercase font-semibold mb-2 lg:hidden xl:hidden ml-3">
+                Share this on:
+              </div>
+              <div className="flex justify-start lg:justify-center xl:justify-center items-start sticky top-[50px]">
+                <div className="bg-slate-100 flex justify-center items-center flex-row lg:flex-col xl:flex-col py-2 lg:py-6 xl:py-6 px-4 rounded-full mb-5">
+                  <ul className="">
+                    <li className="mb-0 lg:mb-3 xl:mb-3 inline-block md:inline lg:block xl:block mr-3 lg:mr-0 xl:mr-0">
+                      <Link
+                        href={`https://www.facebook.com/sharer/sharer.php?u=${post.slug}&quote=${post.title}`}
+                        target="_blank"
+                        className="tooltip"
+                        data-tip="Share on facebook"
+                      >
+                        <FaFacebookF className="h-6 w-6 text-slate-600 hover:text-[#1877F2]" />
+                      </Link>
+                    </li>
+                    <li className="mb-0 lg:mb-3 xl:mb-3 inline-block md:inline lg:block xl:block mr-3 lg:mr-0 xl:mr-0">
+                      <Link
+                        href={`https://www.linkedin.com/shareArticle?url=${post.slug}&title=${post.title}`}
+                        target="_blank"
+                        className="tooltip"
+                        data-tip="Share on LinkedIn"
+                      >
+                        <FaLinkedinIn className="h-6 w-6 text-slate-600 hover:text-[#0A66C2]" />
+                      </Link>
+                    </li>
+                    <li className="mb-0 lg:mb-3 xl:mb-3 inline-block md:inline lg:block xl:block mr-3 lg:mr-0 xl:mr-0">
+                      <Link
+                        href={`https://pinterest.com/pin/create/bookmarklet/?media=${post.featuredImage.node.sourceUrl}&url=${post.slug}&description=${post.title}`}
+                        target="_blank"
+                        className="tooltip"
+                        data-tip="Share on Pinterest"
+                      >
+                        <FaPinterest className="h-6 w-6 text-slate-600 hover:text-[#C8232C]" />
+                      </Link>
+                    </li>
+                    <li className="mb-0 lg:mb-3 xl:mb-3 inline-block md:inline lg:block xl:block mr-3 lg:mr-0 xl:mr-0">
+                      <Link
+                        href={`https://twitter.com/share?url=${post.slug}&text=${post.title}`}
+                        target="_blank"
+                        className="tooltip"
+                        data-tip="Share on X"
+                      >
+                        <RiTwitterXLine className="h-6 w-6 text-slate-600 hover:text-[#000000]" />
+                      </Link>
+                    </li>
+                    <li className="inline-block md:inline lg:block xl:block">
+                      <Link
+                        href={`https://api.whatsapp.com/send?text=${post.title} ${post.slug}`}
+                        target="_blank"
+                        className="tooltip"
+                        data-tip="Share on WhatsApp"
+                      >
+                        <FaWhatsapp className="h-6 w-6 text-slate-600 hover:text-[#25D366]" />
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="lg:w-7/12">
-          <>
-            <div key={post.slug}>
+          <article key={post.slug}>
+            <header>
               <div className="text-sm breadcrumbs mb-3">
                 <ul>
                   <li>
@@ -158,7 +228,8 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
               <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl mb-7 !leading-20 text-black font-bold">
                 {post.title}
               </h1>
-
+            </header>
+            <section>
               <ul
                 className="border-b-2 border-slate-100 p-3 rounded-xl bg-slate-50"
                 style={{ paddingBottom: "-0.25rem" }}
@@ -182,8 +253,8 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
                 className="single-content text-slate-800 font-light text-lg"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               ></div>
-            </div>
-          </>
+            </section>
+          </article>
         </div>
         <div className="lg:w-3/12 order-last lg:order-first xl:order-first">
           <HomeSidebar />
@@ -194,5 +265,3 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
 };
 
 export default SinglePost;
-
-export const revalidate = 120;

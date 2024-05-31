@@ -152,11 +152,6 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/" aria-label="Follow us on Twitter">
-                      <FaTwitter className="h-6 w-6 text-slate-200 hover:text-amber-500" />
-                    </Link>
-                  </li>
-                  <li>
                     <Link href="/" aria-label="Follow us on Pinterest">
                       <FaPinterest className="h-6 w-6 text-slate-200 hover:text-amber-500" />
                     </Link>
