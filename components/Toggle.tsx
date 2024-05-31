@@ -20,7 +20,7 @@ const Toggle: React.FC<ToggleProps> = ({ children }) => {
         onClick={handleToggle}
       >
         <span className="text-black font-semibold mb-4 text-2xl">
-          What's Inside?🧐
+          What&#39;s Inside?🧐
         </span>
         {showContent ? (
           <FaAngleUp className="text-2xl text-amber-500" />
