@@ -9,6 +9,7 @@ import type { Element } from "hast";
 import type { Root, Text } from "hast";
 import parameterize from "parameterize";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
+import Toggle from "@/components/Toggle";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -230,24 +231,20 @@ const SinglePost = async ({ params }: { params: { slug: string } }) => {
               </h1>
             </header>
             <section>
-              <ul
-                className="border-b-2 border-slate-100 p-3 rounded-xl bg-slate-50"
-                style={{ paddingBottom: "-0.25rem" }}
-              >
-                <li className="text-black font-semibold mb-4 text-2xl">
-                  What&#39;s Inside?🧐
-                </li>
-                {toc.map(({ id, title }) => (
-                  <li key={id} className="mb-1">
-                    <Link
-                      href={`#${id}`}
-                      className="font-semibold text-base text-slate-700"
-                    >
-                      {title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <Toggle>
+                <ul>
+                  {toc.map(({ id, title }) => (
+                    <li key={id} className="mb-1">
+                      <Link
+                        href={`#${id}`}
+                        className="font-semibold text-base text-slate-700"
+                      >
+                        {title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </Toggle>
 
               <div
                 className="single-content text-slate-800 font-light text-lg"
