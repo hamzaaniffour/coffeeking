@@ -47,7 +47,7 @@ const SideMailing = () => {
       >
         <h3 className="text-xl text-white font-bold mb-2">Our Mailing List</h3>
         <div className="h-0.5 w-[100px] bg-amber-400 mb-2"></div>
-        <p className="text-slate-500 text-md mb-4 font-medium leading-6">
+        <p className="text-slate-200 text-md mb-4 font-medium leading-6">
           Get great content delivered straight to your inbox.
         </p>
         <label className="input input-bordered bg-[#404c5d] rounded-md text-slate-300 font-medium flex items-center gap-2 mb-3">

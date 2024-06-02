@@ -194,19 +194,16 @@ const Navbar = () => {
               <div className="navbar-end">
                 <ul className="flex justify-center items-center gap-3">
                   <li className="">
-                    <Link href=""><FaFacebookF className="text-white h-5 w-5 inline-block" /></Link>
+                    <Link href="https://www.facebook.com"><FaFacebookF className="text-white h-5 w-5 inline-block" /></Link>
                   </li>
                   <li className="">
-                    <Link href=""><FaInstagram className="text-white h-5 w-5 inline-block" /></Link>
+                    <Link href="https://www.instagram.com"><FaInstagram className="text-white h-5 w-5 inline-block" /></Link>
                   </li>
                   <li className="">
-                    <Link href=""><FaPinterestP className="text-white h-5 w-5 inline-block" /></Link>
-                  </li>
-                  <li className="">
-                    <Link href=""><FaYoutube className="text-white h-5 w-5 inline-block" /></Link>
+                    <Link href="https://www.pinterest.com"><FaPinterestP className="text-white h-5 w-5 inline-block" /></Link>
                   </li>
                   <li className="ml-2">
-                    <button onClick={handleSearchPopup}><BiSearch className="text-white h-5 w-5 inline-block" /></button>
+                    <button onClick={handleSearchPopup} aria-labelledby="Search"><BiSearch className="text-amber-400 h-5 w-5 inline-block" /></button>
                   </li>
                 </ul>
               </div>

@@ -28,14 +28,14 @@ const AcceptCookiesBar: React.FC = () => {
   if (!showBar || accepted) return null;
 
   return (
-    <section className="fixed max-w-md p-4 mx-auto bg-white shadow border border-gray-200 left-4 bottom-4 md:left-8 md:bottom-8 lg:left-8 lg:bottom-8 xl:left-8 xl:bottom-8 rounded-2xl">
+    <section className="fixed max-w-md p-4 mx-auto z-50 bg-white shadow border border-gray-200 left-4 bottom-4 md:left-8 md:bottom-8 lg:left-8 lg:bottom-8 xl:left-8 xl:bottom-8 rounded-2xl">
       <h2 className="font-semibold text-slate-950">
         🍪 Cookie Notice
       </h2>
       <p className="mt-4 text-sm text-slate-900">
         We use cookies to ensure that we give you the best experience on our
         website.{" "}
-        <Link href="/page/cookies-policy" className="text-amber-500 font-semibold hover:underline">
+        <Link href="/page/cookies-policy" className="text-blue-800 font-semibold hover:underline">
           Read cookies policy
         </Link>
         .{" "}
@@ -45,7 +45,7 @@ const AcceptCookiesBar: React.FC = () => {
           Manage your preferences
         </button>
         <button onClick={handleAccept} className="text-sm bg-amber-500 font-bold rounded text-slate-950 px-4 py-2.5 duration-300 transition-colors focus:outline-none">
-          Accept All
+          Accept
         </button>
       </div>
     </section>
