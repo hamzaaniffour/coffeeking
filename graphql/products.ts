@@ -19,16 +19,16 @@ export const GET_PRODUCTS = `
 
 export const GET_5_PRODUCTS = `
   query get5Products {
-    products(first: 10) {
+    products {
       nodes {
-        affiliateLink
         title
-        discount
         featuredImage {
           node {
-            mediaItemUrl
+            sourceUrl
           }
         }
+        affiliateLink
+        discount
       }
     }
   }

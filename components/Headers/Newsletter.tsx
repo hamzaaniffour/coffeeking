@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { BiSend } from "react-icons/bi";
 
 const Newsletter = () => {
   const [result, setResult] = useState<Record<string, string>>({});
@@ -46,9 +47,7 @@ const Newsletter = () => {
         <button
           className="btn join-item border-none bg-amber-400 rounded-r-md font-bold"
           onClick={sendEmail}
-        >
-          Subscribe
-        </button>
+        ><BiSend className="h-7 w-7 inline-block" /></button>
       </div>
       <p className="text-sm text-slate-300 mt-2 max-w-[280px]">
         We will not send you spam. Unsubscribe at any time.

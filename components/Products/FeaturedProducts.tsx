@@ -20,7 +20,7 @@ function limitWords(text: string, limit: number): string {
   return text;
 }
 
-const HomeProducts = async () => {
+const FeaturedProducts = async () => {
   let data;
   try {
     const result = await client.query({
@@ -93,4 +93,4 @@ const HomeProducts = async () => {
   );
 };
 
-export default HomeProducts;
+export default FeaturedProducts;

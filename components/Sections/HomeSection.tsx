@@ -1,5 +1,4 @@
 import React from "react";
-import HomeProducts from "@/components/Products/HomeProducts";
 import GuideSection from "@/components/Sections/GuideSection";
 import HomeBlogs from "@/components/Blogs/HomeBlogs";
 import HomeSidebar from "@/components/Sidebars/HomeSidebar";
@@ -8,6 +7,7 @@ import Hero from "./Hero";
 import ReviewBlogs from "@/components/Blogs/ReviewBlogs";
 import GuidePosts from "@/components/Blogs/GuidePosts";
 import WhyUS from "@/components/Sections/WhyUS";
+import FeaturedProducts from "@/components/Products/FeaturedProducts";
 
 const HomeSection = () => {
   return (
@@ -16,7 +16,7 @@ const HomeSection = () => {
       <div className="mt-20">
         <div className="lg:flex gap-10">
           <div className="lg:w-9/12">
-            <HomeProducts />
+            <FeaturedProducts />
             <Marquees />
             <GuideSection />
             <HomeBlogs />

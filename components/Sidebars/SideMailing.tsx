@@ -53,7 +53,7 @@ const SideMailing = () => {
         <label className="input input-bordered bg-[#404c5d] rounded-md text-slate-300 font-medium flex items-center gap-2 mb-3">
           <input
             type="text"
-            className="grow text-[#808c9c]"
+            className="grow text-[#808c9c] placeholder:text-slate-200"
             placeholder="Email Address"
             value={email}
             onChange={handleInputChange}
