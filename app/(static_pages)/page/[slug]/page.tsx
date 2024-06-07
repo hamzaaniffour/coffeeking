@@ -81,5 +81,3 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
 };
 
 export default SinglePage;
-
-export const revalidate = 120; // Revalidate this page every 120 seconds
