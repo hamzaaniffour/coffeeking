@@ -14,24 +14,24 @@ const Toggle: React.FC<ToggleProps> = ({ children }) => {
   };
 
   return (
-    <div>
+    <div className="border-b-2 border-slate-100 p-3 px-5 rounded-xl bg-slate-100">
       <div
         className="flex items-center justify-between cursor-pointer"
         onClick={handleToggle}
       >
-        <span className="text-black font-semibold mb-4 text-2xl">
+        <span className="text-black font-semibold text-lg">
           What&#39;s Inside?🧐
         </span>
         {showContent ? (
-          <FaAngleUp className="text-2xl text-amber-500" />
+          <FaAngleUp className="text-2xl ml-1.5 relative text-amber-500" />
         ) : (
-          <FaAngleDown className="text-2xl text-amber-500" />
+          <FaAngleDown className="text-2xl ml-1.5 relative text-amber-500" />
         )}
       </div>
       <div
         className={`${
           showContent ? "block" : "hidden"
-        } border-b-2 border-slate-100 p-3 rounded-xl bg-slate-50`}
+        } mt-4`}
         style={{ paddingBottom: "-0.25rem" }}
       >
         {children}

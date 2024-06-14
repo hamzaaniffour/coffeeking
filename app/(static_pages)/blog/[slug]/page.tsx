@@ -10,12 +10,7 @@ import type { Root, Text } from "hast";
 import parameterize from "parameterize";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import Toggle from "@/components/Toggle";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaPinterest,
-  FaWhatsapp,
-} from "react-icons/fa6";
+import { FaFacebookF, FaLinkedinIn, FaPinterest, FaWhatsapp } from "react-icons/fa6";
 import { RiTwitterXLine } from "react-icons/ri";
 
 const client = new ApolloClient({
