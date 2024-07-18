@@ -205,22 +205,22 @@ const Navbar = () => {
               <div className="navbar-end">
                 <ul className="flex justify-center items-center gap-3">
                   <li className="">
-                    <Link href="https://www.facebook.com">
+                    <Link href="https://www.facebook.com" target="_blank">
                       <FaFacebookF className="text-white h-5 w-5 inline-block" />
                     </Link>
                   </li>
                   <li className="">
-                    <Link href="https://www.instagram.com">
+                    <Link href="https://www.instagram.com" target="_blank">
                       <FaInstagram className="text-white h-5 w-5 inline-block" />
                     </Link>
                   </li>
                   <li className="">
-                    <Link href="https://www.pinterest.com">
+                    <Link href="https://www.pinterest.com" target="_blank">
                       <FaPinterestP className="text-white h-5 w-5 inline-block" />
                     </Link>
                   </li>
                   <li className="">
-                    <Link href="https://www.pinterest.com">
+                    <Link href="https://www.x.com" target="_blank">
                       <FaXTwitter className="text-white h-5 w-5 inline-block" />
                     </Link>
                   </li>
